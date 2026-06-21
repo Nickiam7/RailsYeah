@@ -1,0 +1,26 @@
+<%# Placeholder root page — confirms Rails 8 + Bootstrap (no-build) is wired up. %>
+<%# Replaced by the real SEO landing shell in a later story. %>
+<main class="container py-5">
+  <div class="text-center mb-4">
+    <h1 class="display-5 fw-bold">Udemy Course Landing Page</h1>
+    <p class="lead text-body-secondary">
+      Rails 8 (no-build) &middot; Postgres &middot; Bootstrap &mdash; foundation is up.
+    </p>
+  </div>
+
+  <%# Static styling proof: Bootstrap CSS is applied. %>
+  <div class="alert alert-success" role="alert">
+    Bootstrap CSS is loaded — if this box is green and rounded, the stylesheet is working.
+  </div>
+
+  <%# Interactive proof: the dropdown needs Bootstrap JS + Popper to position/toggle. %>
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Bootstrap JS check (open me)
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="<%= rails_health_check_path %>">Health check</a></li>
+      <li><a class="dropdown-item" href="https://www.udemy.com/course/ruby-on-rails-8-and-hotwire-build-a-password-manager/">Course on Udemy</a></li>
+    </ul>
+  </div>
+</main>
