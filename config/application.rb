@@ -23,5 +23,15 @@ module RailsYeah
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # ViewComponent — see the "ViewComponent conventions" section of the README.
+    # Every component is namespaced so it gets its own folder under app/components/
+    # (e.g. Heading::HeadingComponent -> app/components/heading/heading_component.rb,
+    # with its template and preview alongside). Generate with:
+    #   bin/rails generate view_component:component Namespace::Name [attrs]
+    config.view_component.generate.preview = true   # scaffold a preview with each component
+    config.view_component.generate.sidecar = false  # template sits beside the .rb; namespacing already gives each component its own folder
+    # Previews are enabled in development/test by default and discovered in
+    # test/components/previews, served at /rails/view_components.
   end
 end

@@ -1,12 +1,12 @@
 <%# Placeholder root page — confirms Rails 8 + Bootstrap (no-build) is wired up. %>
 <%# Replaced by the real SEO landing shell in a later story. %>
 <main class="container py-5">
-  <div class="text-center mb-4">
-    <h1 class="display-5 fw-bold">Udemy Course Landing Page</h1>
-    <p class="lead text-body-secondary">
-      Rails 8 (no-build) &middot; Postgres &middot; Bootstrap &mdash; foundation is up.
-    </p>
-  </div>
+  <%# Sample ViewComponent rendered in a real view (sidecar: app/components/heading/). %>
+  <%= render Heading::HeadingComponent.new(
+        title: "Udemy Course Landing Page",
+        subtitle: "Rails 8 (no-build) · Postgres · Bootstrap · ViewComponent — foundation is up.",
+        align: "center"
+      ) %>
 
   <%# Static styling proof: Bootstrap CSS is applied. %>
   <div class="alert alert-success" role="alert">

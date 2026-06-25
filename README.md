@@ -14,6 +14,7 @@ into a full learning experience later).
 - **Assets (no build step):** [Propshaft](https://github.com/rails/propshaft) +
   [import maps](https://github.com/rails/importmap-rails) — no Node bundler for JS or CSS
 - **UI:** [Bootstrap](https://getbootstrap.com/) 5.3.x, vendored locally (no CDN, no build)
+- **Components:** [ViewComponent](https://viewcomponent.org) (sidecar + namespaced — see below)
 - **Hotwire:** Turbo + Stimulus
 
 ## Getting started
@@ -60,6 +61,53 @@ Bootstrap ships as local assets so it loads with zero build tooling:
   ```
 
   Keep the CSS version in sync with the pinned JS version.
+
+## ViewComponent conventions
+
+UI is built with [ViewComponent](https://viewcomponent.org). The project goal is
+to turn almost every element (including Bootstrap pieces) into a component.
+
+**Sidecar + namespacing.** Every component is **namespaced** so it gets its own
+folder under `app/components/`, with the Ruby class, template, and (in tests) the
+preview kept together:
+
+```
+app/components/
+  application_component.rb            # base class all components inherit from
+  heading/
+    heading_component.rb              # class Heading::HeadingComponent
+    heading_component.html.erb        # template, beside the .rb
+test/components/
+  heading/heading_component_test.rb
+  previews/heading/heading_component_preview.rb
+```
+
+Generate a component with the namespaced name (the generator appends `Component`):
+
+```bash
+bin/rails generate view_component:component Heading::Heading title
+#   create app/components/heading/heading_component.rb        -> Heading::HeadingComponent
+#   create app/components/heading/heading_component.html.erb
+#   create test/components/previews/heading/heading_component_preview.rb
+#   create test/components/heading/heading_component_test.rb
+```
+
+Defaults are set in `config/application.rb`:
+
+- `config.view_component.generate.sidecar = false` — namespacing already gives each
+  component its own folder, so the template sits **beside** the `.rb`. Flip this to
+  `true` if you'd rather nest the template in a `heading_component/` subfolder.
+- `config.view_component.generate.preview = true` — scaffolds a preview per component.
+
+Render a component in any view:
+
+```erb
+<%= render Heading::HeadingComponent.new(title: "Welcome", subtitle: "...", align: "center") %>
+```
+
+**Previews.** Enabled in development/test and served at
+[`/rails/view_components`](http://localhost:3000/rails/view_components). Preview
+classes live in `test/components/previews/`.
 
 ## Configuration
 
