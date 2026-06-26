@@ -14,7 +14,7 @@
   </div>
 
   <%# Interactive proof: the dropdown needs Bootstrap JS + Popper to position/toggle. %>
-  <div class="dropdown">
+  <div class="dropdown mb-4">
     <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       Bootstrap JS check (open me)
     </button>
@@ -23,4 +23,7 @@
       <li><a class="dropdown-item" href="https://www.udemy.com/course/ruby-on-rails-8-and-hotwire-build-a-password-manager/">Course on Udemy</a></li>
     </ul>
   </div>
+
+  <%# Stimulus proof: the counter button is wired to the `counter` Stimulus controller. %>
+  <%= render Counter::CounterComponent.new(label: "Stimulus check (click me)") %>
 </main>
