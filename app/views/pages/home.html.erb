@@ -1,6 +1,6 @@
 <%# Placeholder root page — confirms Rails 8 + Bootstrap (no-build) is wired up. %>
 <%# Replaced by the real SEO landing shell in a later story. %>
-<main class="container py-5">
+<div class="container py-5">
   <%# Sample ViewComponent rendered in a real view (sidecar: app/components/heading/). %>
   <%= render Heading::HeadingComponent.new(
         title: "Udemy Course Landing Page",
@@ -26,4 +26,4 @@
 
   <%# Stimulus proof: the counter button is wired to the `counter` Stimulus controller. %>
   <%= render Counter::CounterComponent.new(label: "Stimulus check (click me)") %>
-</main>
+</div>

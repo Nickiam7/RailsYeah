@@ -8,3 +8,56 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+/* ---------------------------------------------------------------------------
+ * Brand theme
+ * Ruby-red accent applied via CSS variables so the site can be rethemed in one
+ * place. Bootstrap is vendored/compiled, so we theme with its --bs-* component
+ * variables rather than recompiling SCSS.
+ * ------------------------------------------------------------------------- */
+:root {
+  --brand: #cc342d;
+  --brand-rgb: 204, 52, 45;
+  --brand-dark: #a02822;
+}
+
+/* Brand-colored button variant (built on Bootstrap's button CSS variables). */
+.btn-brand {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--brand);
+  --bs-btn-border-color: var(--brand);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--brand-dark);
+  --bs-btn-hover-border-color: var(--brand-dark);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--brand-dark);
+  --bs-btn-active-border-color: var(--brand-dark);
+  --bs-btn-focus-shadow-rgb: var(--brand-rgb);
+}
+
+/* Navbar */
+.site-navbar {
+  background-color: #1a1a1a;
+}
+.site-navbar .navbar-brand {
+  color: #fff;
+}
+.site-navbar__mark {
+  color: var(--brand);
+}
+
+/* Footer */
+.site-footer {
+  background-color: #1a1a1a;
+  color: #adb5bd;
+}
+.site-footer__brand {
+  color: #fff;
+}
+.site-footer a {
+  color: #dee2e6;
+  text-decoration: none;
+}
+.site-footer a:hover {
+  color: #fff;
+}

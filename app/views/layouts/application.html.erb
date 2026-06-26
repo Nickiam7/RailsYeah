@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Rails Yeah" %></title>
+    <title><%= content_for(:title) || Site::COURSE %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -23,7 +23,13 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="d-flex flex-column min-vh-100">
+    <%= render Navbar::NavbarComponent.new %>
+
+    <main class="flex-grow-1">
+      <%= yield %>
+    </main>
+
+    <%= render Footer::FooterComponent.new %>
   </body>
 </html>
