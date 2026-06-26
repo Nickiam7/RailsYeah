@@ -64,8 +64,14 @@ Bootstrap ships as local assets so it loads with zero build tooling:
 
 ## ViewComponent conventions
 
-UI is built with [ViewComponent](https://viewcomponent.org). The project goal is
-to turn almost every element (including Bootstrap pieces) into a component.
+UI is built with [ViewComponent](https://viewcomponent.org).
+
+> **Convention: wrap Bootstrap UI in ViewComponents.** Almost every element —
+> including Bootstrap pieces (buttons, cards, navbars, alerts, …) — should be a
+> ViewComponent rather than raw markup repeated across views. Components own their
+> Bootstrap classes and any Stimulus behavior, so markup stays DRY and testable.
+> (The placeholder `pages#home` is the one exception while the landing shell is
+> still being built.)
 
 **Sidecar + namespacing.** Every component is **namespaced** so it gets its own
 folder under `app/components/`, with the Ruby class, template, and (in tests) the
@@ -108,6 +114,33 @@ Render a component in any view:
 **Previews.** Enabled in development/test and served at
 [`/rails/view_components`](http://localhost:3000/rails/view_components). Preview
 classes live in `test/components/previews/`.
+
+## Hotwire (Turbo + Stimulus)
+
+JavaScript behavior uses [Hotwire](https://hotwired.dev) — no bundler. Everything
+loads through the import map (see "Bootstrap (no build)" above); entry point is
+`app/javascript/application.js`.
+
+- **Turbo** (`turbo-rails`) is imported and enabled app-wide (Turbo Drive on by
+  default). Bootstrap's CSS is tagged `data-turbo-track="reload"` so a new
+  deploy's assets are picked up across Turbo visits.
+- **Stimulus** controllers live in `app/javascript/controllers/`. They are
+  auto-registered by filename via `eagerLoadControllersFrom` in
+  `controllers/index.js`, so `foo_controller.js` becomes the `foo` identifier — no
+  manual registration needed.
+
+Add a controller:
+
+```bash
+bin/rails generate stimulus foo   # -> app/javascript/controllers/foo_controller.js
+```
+
+Reference it from a component or view with `data-controller`, `data-action`, and
+`data-<name>-target`. The sample `Counter::CounterComponent`
+(`app/components/counter/`) wires a Bootstrap button to
+`app/javascript/controllers/counter_controller.js` and is exercised by a browser
+system test (`test/system/hotwire_test.rb`) that confirms Stimulus fires and Turbo
+is loaded.
 
 ## Configuration
 
