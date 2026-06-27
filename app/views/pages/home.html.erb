@@ -1,3 +1,4 @@
 <%# Marketing landing page. More sections (curriculum, reviews) arrive with the %>
 <%# content-management stories later in the sprint. %>
+<%= render Seo::CourseSchemaComponent.new(url: request.original_url) %>
 <%= render Hero::HeroComponent.new %>
