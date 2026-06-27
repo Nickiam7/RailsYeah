@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   get "/sitemap.xml", to: "sitemaps#show", as: :sitemap, defaults: { format: "xml" }
   get "/robots.txt", to: "robots#show", as: :robots
 
+  # Admin area — authenticated, admin-only (see Admin::BaseController + AdminPolicy).
+  namespace :admin do
+    root to: "dashboard#show"
+  end
+
   # Defines the root path route ("/")
   root "pages#home"
 end

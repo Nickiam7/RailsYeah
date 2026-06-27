@@ -21,9 +21,12 @@
           </li>
         <% end %>
       </ul>
-      <a class="btn btn-brand ms-lg-3 mt-2 mt-lg-0" href="<%= cta_url %>" target="_blank" rel="noopener">
-        <%= cta_text %>
-      </a>
+      <% if signed_in %>
+        <%= link_to "Sign out", destroy_user_session_path,
+              class: "btn btn-outline-light ms-lg-3 mt-2 mt-lg-0", data: { turbo_method: :delete } %>
+      <% else %>
+        <a class="btn btn-brand ms-lg-3 mt-2 mt-lg-0" href="<%= cta_url %>" target="_blank" rel="noopener"><%= cta_text %></a>
+      <% end %>
     </div>
   </div>
 </nav>

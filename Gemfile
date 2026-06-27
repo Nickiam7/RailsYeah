@@ -22,6 +22,8 @@ gem "view_component"
 gem "devise"
 # Deliver transactional email via Postmark [https://github.com/ActiveCampaign/postmark-rails]
 gem "postmark-rails"
+# Minimal authorization through OO design and pure Ruby classes [https://github.com/varvet/pundit]
+gem "pundit"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"

@@ -20,4 +20,11 @@ class Navbar::NavbarComponentTest < ViewComponent::TestCase
     assert_link("Pricing", href: "#pricing")
     assert_no_link("Curriculum")
   end
+
+  def test_shows_sign_out_instead_of_the_cta_when_signed_in
+    render_inline(Navbar::NavbarComponent.new(signed_in: true))
+
+    assert_link("Sign out", href: "/users/sign_out")
+    assert_no_link("Enroll on Udemy")
+  end
 end

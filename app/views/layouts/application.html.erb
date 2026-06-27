@@ -24,7 +24,7 @@
   </head>
 
   <body class="d-flex flex-column min-vh-100">
-    <%= render Navbar::NavbarComponent.new %>
+    <%= render Navbar::NavbarComponent.new(signed_in: user_signed_in?) %>
 
     <% if notice.present? || alert.present? %>
       <div class="container mt-3">
