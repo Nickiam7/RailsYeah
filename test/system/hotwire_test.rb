@@ -2,28 +2,15 @@
 
 require "application_system_test_case"
 
-# Verifies the Hotwire stack is wired up end-to-end in a real browser:
-# Stimulus controllers load and fire, and Turbo Drive is enabled (Story #2932).
+# Verifies the Hotwire stack is loaded app-wide in a real browser: Turbo Drive and
+# Stimulus are both available on the rendered landing page (Story #2932). The
+# Stimulus controllers themselves are covered by component tests + previews.
 class HotwireTest < ApplicationSystemTestCase
-  test "the sample Stimulus controller connects and responds to a click action" do
-    visit root_path
-
-    # connect() runs on load and replaces the no-JS fallback text.
-    assert_text "Stimulus connected"
-    assert_no_text "Stimulus not connected"
-
-    # The increment action fires on click and updates the output.
-    click_button "Stimulus check (click me)"
-    assert_text "Clicked 1 time"
-
-    click_button "Stimulus check (click me)"
-    assert_text "Clicked 2 times"
-  end
-
-  test "Turbo is loaded and Turbo Drive is available" do
+  test "Turbo and Stimulus are loaded app-wide" do
     visit root_path
 
     assert_equal "object", evaluate_script("typeof window.Turbo")
     assert_equal "function", evaluate_script("typeof window.Turbo.visit")
+    assert_equal "object", evaluate_script("typeof window.Stimulus")
   end
 end

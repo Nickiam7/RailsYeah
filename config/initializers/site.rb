@@ -10,4 +10,13 @@ module Site
   INSTRUCTOR = "Nick McNeany"
   UDEMY_URL  = "https://www.udemy.com/course/ruby-on-rails-8-and-hotwire-build-a-password-manager/"
   GITHUB_URL = "https://github.com/Nickiam7"
+
+  # Course facts (from the Udemy listing). Used in the hero "at a glance" card and,
+  # later, JSON-LD structured data. Inline for V1; becomes editable content later.
+  RATING       = "4.7"
+  RATING_COUNT = 81
+  SECTIONS     = 12
+  LECTURES     = 69
+  DURATION     = "7h 22m"
+  LEVEL        = "All Levels"
 end
