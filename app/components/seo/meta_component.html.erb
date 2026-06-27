@@ -1,0 +1,20 @@
+<title><%= full_title %></title>
+<meta name="description" content="<%= description %>">
+
+<%# Open Graph %>
+<meta property="og:site_name" content="<%= Site::NAME %>">
+<meta property="og:title" content="<%= title %>">
+<meta property="og:description" content="<%= description %>">
+<meta property="og:type" content="<%= type %>">
+<meta property="og:url" content="<%= url %>">
+<% if image_url.present? %>
+  <meta property="og:image" content="<%= image_url %>">
+<% end %>
+
+<%# Twitter card %>
+<meta name="twitter:card" content="<%= twitter_card %>">
+<meta name="twitter:title" content="<%= title %>">
+<meta name="twitter:description" content="<%= description %>">
+<% if image_url.present? %>
+  <meta name="twitter:image" content="<%= image_url %>">
+<% end %>
