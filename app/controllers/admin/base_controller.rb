@@ -5,6 +5,8 @@ module Admin
   # Everything under Admin:: inherits these guards. The dashboard UI + admin
   # layout are built out in #2943.
   class BaseController < ApplicationController
+    layout "admin"
+
     before_action :authenticate_user!
     before_action :require_admin
 

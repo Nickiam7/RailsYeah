@@ -1,6 +1,18 @@
-<div class="container py-5">
-  <h1 class="h3 fw-bold">Admin</h1>
-  <p class="text-body-secondary mb-0">
-    Admin dashboard placeholder — the full admin shell (dedicated layout + nav) lands in #2943.
-  </p>
+<div class="container">
+  <h1 class="h3 fw-bold mb-1">Dashboard</h1>
+  <p class="text-body-secondary">Manage the content shown on the public landing page.</p>
+
+  <div class="row g-4 mt-1">
+    <% @sections.each do |section| %>
+      <div class="col-sm-6 col-lg-3">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <h2 class="h6 fw-bold"><%= section[:name] %></h2>
+            <p class="small text-body-secondary flex-grow-1"><%= section[:description] %></p>
+            <span class="badge text-bg-secondary align-self-start">Editable in the Content Management epic</span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
