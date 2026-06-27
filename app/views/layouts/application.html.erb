@@ -26,6 +26,23 @@
   <body class="d-flex flex-column min-vh-100">
     <%= render Navbar::NavbarComponent.new %>
 
+    <% if notice.present? || alert.present? %>
+      <div class="container mt-3">
+        <% if notice.present? %>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <%= notice %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% end %>
+        <% if alert.present? %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <%= alert %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
     <main class="flex-grow-1">
       <%= yield %>
     </main>

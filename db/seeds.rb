@@ -7,3 +7,15 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+# Admin user for the CMS. There is no public sign-up, so the first admin is seeded.
+# Override the defaults with ADMIN_EMAIL / ADMIN_PASSWORD env vars (required in
+# production — do not ship the development default password).
+admin_email = ENV.fetch("ADMIN_EMAIL", "admin@example.com")
+admin_password = ENV.fetch("ADMIN_PASSWORD", "password123456")
+
+admin = User.find_or_initialize_by(email: admin_email)
+admin.password = admin_password if admin.new_record?
+admin.admin = true
+admin.save!
+puts "Seeded admin user: #{admin.email}"

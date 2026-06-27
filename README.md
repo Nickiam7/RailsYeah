@@ -142,6 +142,28 @@ Reference it from a component or view with `data-controller`, `data-action`, and
 system test (`test/system/hotwire_test.rb`) that confirms Stimulus fires and Turbo
 is loaded.
 
+## Authentication (admin only)
+
+The CMS is admin-only — there is **no public sign-up** (Devise's `:registerable`
+is disabled). The first admin is created by the seeds:
+
+```bash
+bin/rails db:seed   # creates the admin user
+```
+
+Sign in at `/users/sign_in`. Configure via env vars:
+
+| Var | Purpose | Default (dev) |
+| --- | --- | --- |
+| `ADMIN_EMAIL` / `ADMIN_PASSWORD` | Seeded admin credentials | `admin@example.com` / `password123456` |
+| `POSTMARK_API_TOKEN` | Postmark server token for transactional mail (prod) | — |
+| `DEVISE_MAILER_SENDER` | "From" address on Devise emails | `no-reply@example.com` |
+| `APP_HOST` | Host for mailer links (prod) | `example.com` |
+
+In production, mail is delivered via **Postmark** — set `POSTMARK_API_TOKEN` (or
+`postmark: api_token:` in credentials) and verify the sender domain. **Set real
+`ADMIN_*` values in production; never ship the development default password.**
+
 ## Configuration
 
 - Database config: `config/database.yml` (dev/test/prod).

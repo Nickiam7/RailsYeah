@@ -58,7 +58,15 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: "example.com" }
+  config.action_mailer.default_url_options = { host: ENV.fetch("APP_HOST", "example.com") }
+
+  # Deliver transactional mail (Devise password resets, etc.) via Postmark.
+  # Provision the server token via `rails credentials:edit` (postmark: api_token:)
+  # or the POSTMARK_API_TOKEN env var, and verify the DEVISE_MAILER_SENDER domain.
+  config.action_mailer.delivery_method = :postmark
+  config.action_mailer.postmark_settings = {
+    api_token: Rails.application.credentials.dig(:postmark, :api_token) || ENV["POSTMARK_API_TOKEN"]
+  }
 
   # Specify outgoing SMTP server. Remember to add smtp/* credentials via rails credentials:edit.
   # config.action_mailer.smtp_settings = {
