@@ -11,6 +11,10 @@ module Site
   UDEMY_URL  = "https://www.udemy.com/course/ruby-on-rails-8-and-hotwire-build-a-password-manager/"
   GITHUB_URL = "https://github.com/Nickiam7"
 
+  # Social share image used for Open Graph / Twitter cards. Placeholder for now —
+  # replace with a branded 1200x630 PNG dropped in public/ or app/assets/images/.
+  OG_IMAGE = "/icon.png"
+
   # Course facts (from the Udemy listing). Used in the hero "at a glance" card and,
   # later, JSON-LD structured data. Inline for V1; becomes editable content later.
   RATING       = "4.7"
