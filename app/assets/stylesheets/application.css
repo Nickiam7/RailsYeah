@@ -61,3 +61,11 @@
 .site-footer a:hover {
   color: #fff;
 }
+
+/* Hero */
+.site-hero {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a1215 55%, #3a0f12 100%);
+}
+.hero-rating {
+  color: #ffc107;
+}
