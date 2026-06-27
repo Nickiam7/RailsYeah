@@ -15,14 +15,16 @@ class Navbar::NavbarComponent < ApplicationComponent
     Link.new("Reviews", "#reviews")
   ].freeze
 
-  def initialize(brand: Site::NAME, links: DEFAULT_LINKS, cta_text: "Enroll on Udemy", cta_url: Site::UDEMY_URL)
+  def initialize(brand: Site::NAME, links: DEFAULT_LINKS, cta_text: "Enroll on Udemy",
+                 cta_url: Site::UDEMY_URL, signed_in: false)
     @brand = brand
     @links = links
     @cta_text = cta_text
     @cta_url = cta_url
+    @signed_in = signed_in
   end
 
   private
 
-  attr_reader :brand, :links, :cta_text, :cta_url
+  attr_reader :brand, :links, :cta_text, :cta_url, :signed_in
 end
