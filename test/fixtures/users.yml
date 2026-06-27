@@ -1,0 +1,10 @@
+# Passwords are "password123456" for both. Devise::Encryptor builds a valid hash.
+admin:
+  email: admin@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, "password123456") %>
+  admin: true
+
+member:
+  email: member@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, "password123456") %>
+  admin: false

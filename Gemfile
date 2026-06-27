@@ -18,6 +18,10 @@ gem "stimulus-rails"
 gem "jbuilder"
 # Build reusable, testable, encapsulated view components [https://viewcomponent.org]
 gem "view_component"
+# Flexible authentication for Rails [https://github.com/heartcombo/devise]
+gem "devise"
+# Deliver transactional email via Postmark [https://github.com/ActiveCampaign/postmark-rails]
+gem "postmark-rails"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"

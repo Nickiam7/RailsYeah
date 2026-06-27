@@ -142,6 +142,45 @@ Reference it from a component or view with `data-controller`, `data-action`, and
 system test (`test/system/hotwire_test.rb`) that confirms Stimulus fires and Turbo
 is loaded.
 
+## Authentication (admin only)
+
+The CMS is admin-only — there is **no public sign-up** (Devise's `:registerable`
+is disabled). The first admin is created by the seeds:
+
+```bash
+bin/rails db:seed   # creates the admin user
+```
+
+Sign in at `/users/sign_in`.
+
+**Secrets live in Rails encrypted credentials** (`config/credentials.yml.enc`,
+decrypted by `config/master.key` locally or `RAILS_MASTER_KEY` in production) —
+not raw env vars. Edit them with:
+
+```bash
+bin/rails credentials:edit
+```
+
+```yaml
+admin:
+  email: admin@yourdomain.com
+  password: <a-strong-password>     # required in production
+postmark:
+  api_token: <postmark-server-token>
+mailer:
+  sender: no-reply@yourdomain.com   # verified Postmark sender
+app:
+  host: yourdomain.com              # host for mailer links
+database:
+  password: <production-db-password>
+```
+
+Dev/test fall back to safe defaults (admin `admin@example.com` / `password123456`),
+so you can run locally without setting anything. **Production requires the admin
+credential** — `db:seed` raises if it's missing — plus the Postmark token for mail.
+The only env var a production host needs is `RAILS_MASTER_KEY` (the rest is in the
+encrypted store).
+
 ## Configuration
 
 - Database config: `config/database.yml` (dev/test/prod).

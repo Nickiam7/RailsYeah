@@ -83,7 +83,7 @@ production:
     <<: *default
     database: rails_yeah_production
     username: rails_yeah
-    password: <%= ENV["RAILS_YEAH_DATABASE_PASSWORD"] %>
+    password: <%= Rails.application.credentials.dig(:database, :password) || ENV["RAILS_YEAH_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
     database: rails_yeah_production_cache
