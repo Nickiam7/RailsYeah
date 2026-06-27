@@ -151,18 +151,35 @@ is disabled). The first admin is created by the seeds:
 bin/rails db:seed   # creates the admin user
 ```
 
-Sign in at `/users/sign_in`. Configure via env vars:
+Sign in at `/users/sign_in`.
 
-| Var | Purpose | Default (dev) |
-| --- | --- | --- |
-| `ADMIN_EMAIL` / `ADMIN_PASSWORD` | Seeded admin credentials | `admin@example.com` / `password123456` |
-| `POSTMARK_API_TOKEN` | Postmark server token for transactional mail (prod) | — |
-| `DEVISE_MAILER_SENDER` | "From" address on Devise emails | `no-reply@example.com` |
-| `APP_HOST` | Host for mailer links (prod) | `example.com` |
+**Secrets live in Rails encrypted credentials** (`config/credentials.yml.enc`,
+decrypted by `config/master.key` locally or `RAILS_MASTER_KEY` in production) —
+not raw env vars. Edit them with:
 
-In production, mail is delivered via **Postmark** — set `POSTMARK_API_TOKEN` (or
-`postmark: api_token:` in credentials) and verify the sender domain. **Set real
-`ADMIN_*` values in production; never ship the development default password.**
+```bash
+bin/rails credentials:edit
+```
+
+```yaml
+admin:
+  email: admin@yourdomain.com
+  password: <a-strong-password>     # required in production
+postmark:
+  api_token: <postmark-server-token>
+mailer:
+  sender: no-reply@yourdomain.com   # verified Postmark sender
+app:
+  host: yourdomain.com              # host for mailer links
+database:
+  password: <production-db-password>
+```
+
+Dev/test fall back to safe defaults (admin `admin@example.com` / `password123456`),
+so you can run locally without setting anything. **Production requires the admin
+credential** — `db:seed` raises if it's missing — plus the Postmark token for mail.
+The only env var a production host needs is `RAILS_MASTER_KEY` (the rest is in the
+encrypted store).
 
 ## Configuration
 

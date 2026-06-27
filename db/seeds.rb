@@ -9,10 +9,12 @@
 #   end
 
 # Admin user for the CMS. There is no public sign-up, so the first admin is seeded.
-# Override the defaults with ADMIN_EMAIL / ADMIN_PASSWORD env vars (required in
-# production — do not ship the development default password).
-admin_email = ENV.fetch("ADMIN_EMAIL", "admin@example.com")
-admin_password = ENV.fetch("ADMIN_PASSWORD", "password123456")
+# Set the credentials via `bin/rails credentials:edit` (admin: email:/password:).
+# Dev/test fall back to a default; production requires the credential to be set.
+admin_email = Rails.application.credentials.dig(:admin, :email) || "admin@example.com"
+admin_password = Rails.application.credentials.dig(:admin, :password) ||
+                 (Rails.env.local? ? "password123456" : nil)
+raise "Set admin credentials (admin: email:/password:) via `bin/rails credentials:edit`" if admin_password.blank?
 
 admin = User.find_or_initialize_by(email: admin_email)
 admin.password = admin_password if admin.new_record?
