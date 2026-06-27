@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin &middot; <%= Site::NAME %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+
+    <%= stylesheet_link_tag "bootstrap.min", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="d-flex flex-column min-vh-100 bg-body-tertiary">
+    <%= render Admin::NavComponent.new(user_email: current_user&.email) %>
+
+    <% if notice.present? || alert.present? %>
+      <div class="container mt-3">
+        <% if notice.present? %>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <%= notice %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% end %>
+        <% if alert.present? %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <%= alert %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <main class="flex-grow-1 py-4">
+      <%= yield %>
+    </main>
+  </body>
+</html>

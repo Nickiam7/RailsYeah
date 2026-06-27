@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg site-navbar" data-bs-theme="dark">
+  <div class="container">
+    <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="<%= admin_root_path %>">
+      <svg class="site-navbar__mark" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M6 2h12l4 6-10 14L2 8z" />
+      </svg>
+      Course Admin
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#adminNav" aria-controls="adminNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="adminNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="<%= admin_root_path %>">Dashboard</a></li>
+        <% sections.each do |section| %>
+          <li class="nav-item"><a class="nav-link" href="<%= section.href %>"><%= section.label %></a></li>
+        <% end %>
+      </ul>
+
+      <ul class="navbar-nav align-items-lg-center">
+        <li class="nav-item">
+          <a class="nav-link" href="<%= root_path %>" target="_blank" rel="noopener">View site &#8599;</a>
+        </li>
+        <% if user_email.present? %>
+          <li class="nav-item"><span class="navbar-text small me-lg-3"><%= user_email %></span></li>
+        <% end %>
+        <li class="nav-item">
+          <%= link_to "Sign out", destroy_user_session_path,
+                class: "btn btn-sm btn-outline-light", data: { turbo_method: :delete } %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
