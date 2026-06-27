@@ -22,5 +22,6 @@ module Site
   SECTIONS     = 12
   LECTURES     = 69
   DURATION     = "7h 22m"
+  WORKLOAD_ISO = "PT7H22M" # ISO 8601 duration of DURATION, for schema.org JSON-LD
   LEVEL        = "All Levels"
 end
