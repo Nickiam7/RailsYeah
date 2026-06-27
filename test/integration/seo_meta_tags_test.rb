@@ -9,6 +9,7 @@ class SeoMetaTagsTest < ActionDispatch::IntegrationTest
 
     assert_select "head title", text: Site::COURSE
     assert_select "meta[name=description][content=?]", Site::TAGLINE
+    assert_select "link[rel=canonical][href=?]", "http://www.example.com/"
     assert_select "meta[property='og:title'][content=?]", Site::COURSE
     assert_select "meta[property='og:description'][content=?]", Site::TAGLINE
     assert_select "meta[property='og:type'][content=website]"

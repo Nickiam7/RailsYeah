@@ -8,6 +8,7 @@ class Seo::MetaComponentTest < ViewComponent::TestCase
 
     assert_selector("title", text: Site::COURSE, visible: :all)
     assert_selector("meta[name='description'][content='#{Site::TAGLINE}']", visible: :all)
+    assert_selector("link[rel='canonical'][href='https://railsyeah.test/']", visible: :all)
     assert_selector("meta[property='og:title'][content='#{Site::COURSE}']", visible: :all)
     assert_selector("meta[property='og:type'][content='website']", visible: :all)
     assert_selector("meta[property='og:url'][content='https://railsyeah.test/']", visible: :all)
