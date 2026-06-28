@@ -1,11 +1,12 @@
-<section id="curriculum" class="py-5 bg-body-tertiary">
+<section id="curriculum" class="section bg-body-tertiary">
   <div class="container">
-    <h2 class="h3 fw-bold mb-4">Course content</h2>
-    <div class="list-group shadow-sm">
+    <%= render Heading::SectionHeadingComponent.new(eyebrow: "Curriculum", title: "Course content") %>
+
+    <div class="curriculum mt-2">
       <% sections.each do |section| %>
-        <div class="list-group-item d-flex justify-content-between align-items-center gap-3">
+        <div class="curriculum-section d-flex justify-content-between align-items-center gap-3">
           <span class="fw-semibold"><%= section.title %></span>
-          <span class="text-body-secondary small text-nowrap"><%= meta_for(section) %></span>
+          <span class="curriculum-meta text-body-secondary small text-nowrap"><%= meta_for(section) %></span>
         </div>
       <% end %>
     </div>
