@@ -313,3 +313,20 @@
   color: var(--color-accent);
   margin-top: 0.15rem;
 }
+
+/* ============================================================================
+ * Curriculum (Story #2959) — clean bordered list of course sections. Built to
+ * accept an expandable lecture list once the Lecture model lands.
+ * ========================================================================== */
+.curriculum {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+.curriculum-section {
+  padding: 1rem 1.25rem;
+}
+.curriculum-section + .curriculum-section {
+  border-top: 1px solid var(--color-border);
+}
