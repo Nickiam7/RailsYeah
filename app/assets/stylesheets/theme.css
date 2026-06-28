@@ -358,3 +358,19 @@
   color: var(--color-accent-strong);
   font-weight: var(--fw-bold);
 }
+
+/* ============================================================================
+ * Instructor (Story #2960) — photo/placeholder + bio.
+ * ========================================================================== */
+.instructor-avatar {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+.instructor-avatar-placeholder {
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent-strong);
+  font-size: 3rem;
+  font-weight: var(--fw-bold);
+}
