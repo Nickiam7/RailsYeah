@@ -1,7 +1,8 @@
-<section id="faq" class="py-5 bg-body-tertiary">
+<section id="faq" class="section bg-body-tertiary">
   <div class="container">
-    <h2 class="h3 fw-bold mb-4">Frequently asked questions</h2>
-    <div class="accordion" id="faqAccordion">
+    <%= render Heading::SectionHeadingComponent.new(eyebrow: "FAQ", title: "Frequently asked questions") %>
+
+    <div class="accordion faq-accordion mt-2" id="faqAccordion">
       <% items.each_with_index do |item, index| %>
         <div class="accordion-item">
           <h3 class="accordion-header">
