@@ -1,0 +1,14 @@
+published_one:
+  name: Test Student
+  role: Developer
+  quote: This course was fantastic.
+  rating: 5
+  position: 0
+  published: true
+
+hidden:
+  name: Hidden Student
+  quote: This testimonial is unpublished.
+  rating: 4
+  position: 1
+  published: false

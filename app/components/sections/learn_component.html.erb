@@ -1,0 +1,13 @@
+<section id="learn" class="py-5">
+  <div class="container">
+    <h2 class="h3 fw-bold mb-4">What you'll learn</h2>
+    <div class="row g-3">
+      <% objectives.each do |objective| %>
+        <div class="col-md-6 d-flex gap-2">
+          <span class="text-success fw-bold" aria-hidden="true">&check;</span>
+          <span><%= objective.description %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

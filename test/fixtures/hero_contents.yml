@@ -1,0 +1,5 @@
+main:
+  title: Test Course Title
+  subtitle: A test tagline for the hero.
+  cta_label: Enroll Now
+  cta_url: https://example.com/course
