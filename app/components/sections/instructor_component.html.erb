@@ -1,0 +1,12 @@
+<section id="instructor" class="py-5">
+  <div class="container">
+    <h2 class="h3 fw-bold mb-4">Your instructor</h2>
+    <p class="h5 fw-bold mb-1"><%= instructor.name %></p>
+    <% if instructor.headline.present? %>
+      <p class="text-body-secondary"><%= instructor.headline %></p>
+    <% end %>
+    <% if instructor.bio.present? %>
+      <p class="mb-0" style="max-width: 48rem;"><%= instructor.bio %></p>
+    <% end %>
+  </div>
+</section>

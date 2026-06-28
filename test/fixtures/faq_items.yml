@@ -1,0 +1,11 @@
+published_one:
+  question: Is this a test question?
+  answer: Yes, this is a test answer.
+  position: 0
+  published: true
+
+hidden:
+  question: Hidden question?
+  answer: Hidden answer.
+  position: 1
+  published: false

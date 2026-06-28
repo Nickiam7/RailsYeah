@@ -1,7 +1,12 @@
-# Placeholder controller for the root page used to confirm the app boots with
-# Bootstrap (CSS + JS) wired up. The real SEO landing shell replaces this in a
-# later story (see sprint "Foundation & Landing Shell").
+# Public marketing landing page. Renders its sections from the editable content
+# models (#2944); each section component hides itself when its data is empty.
 class PagesController < ApplicationController
   def home
+    @hero = HeroContent.current
+    @objectives = LearningObjective.ordered
+    @curriculum = CurriculumSection.ordered
+    @testimonials = Testimonial.published.ordered
+    @faqs = FaqItem.published.ordered
+    @instructor = Instructor.current
   end
 end
