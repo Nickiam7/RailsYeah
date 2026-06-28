@@ -11,7 +11,7 @@
           <p class="text-body-secondary"><%= instructor.headline %></p>
         <% end %>
         <% if instructor.bio.present? %>
-          <p class="mb-0" style="max-width: 48rem;"><%= instructor.bio %></p>
+          <div class="rich-text-content mb-0" style="max-width: 48rem;"><%= helpers.rich_text(instructor.bio) %></div>
         <% end %>
       </div>
     </div>

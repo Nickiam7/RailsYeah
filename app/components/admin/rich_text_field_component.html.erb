@@ -1,0 +1,18 @@
+<div class="mb-3" data-controller="rich-text">
+  <%= form.label attribute, label_text, class: "form-label" %>
+  <div class="rich-text-field border rounded">
+    <div class="btn-toolbar gap-1 p-2 border-bottom bg-body-tertiary" role="toolbar" data-rich-text-target="toolbar">
+      <% buttons.each do |button| %>
+        <button type="button" class="btn btn-sm btn-outline-secondary"
+                data-action="rich-text#command"
+                data-command="<%= button.command %>"
+                <% if button.level %>data-level="<%= button.level %>"<% end %>>
+          <%= button.label %>
+        </button>
+      <% end %>
+    </div>
+    <div class="rich-text-editor p-2" data-rich-text-target="editor"></div>
+  </div>
+  <%= form.text_area attribute, rows: 6, class: "form-control mt-2",
+        data: { "rich-text-target": "input" } %>
+</div>
