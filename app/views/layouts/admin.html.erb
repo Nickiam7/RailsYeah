@@ -17,6 +17,8 @@
   <body class="d-flex flex-column min-vh-100 bg-body-tertiary">
     <%= render Admin::NavComponent.new(user_email: current_user&.email) %>
 
+    <%= render Admin::BreadcrumbComponent.new(controller_name: controller_name, action_name: action_name) %>
+
     <% if notice.present? || alert.present? %>
       <div class="container mt-3">
         <% if notice.present? %>
