@@ -298,3 +298,18 @@
 .site-hero .hero-rating {
   color: #e0a800; /* amber stars, legible on the warm background */
 }
+
+/* ============================================================================
+ * Check badge (Story #2958) — accent checkmark for objective / feature lists.
+ * ========================================================================== */
+.check-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
+  margin-top: 0.15rem;
+}
