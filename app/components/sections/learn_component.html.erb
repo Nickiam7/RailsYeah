@@ -1,11 +1,19 @@
-<section id="learn" class="py-5">
+<section id="learn" class="section">
   <div class="container">
-    <h2 class="h3 fw-bold mb-4">What you'll learn</h2>
-    <div class="row g-3">
+    <%= render Heading::SectionHeadingComponent.new(eyebrow: "Course outcomes", title: "What you'll learn") %>
+
+    <div class="row g-4 mt-2">
       <% objectives.each do |objective| %>
-        <div class="col-md-6 d-flex gap-2">
-          <span class="text-success fw-bold" aria-hidden="true">&check;</span>
-          <span><%= objective.description %></span>
+        <div class="col-md-6">
+          <div class="d-flex gap-3 align-items-start">
+            <span class="check-badge flex-shrink-0" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                   stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 8.5l3.5 3.5L13 4" />
+              </svg>
+            </span>
+            <span><%= objective.description %></span>
+          </div>
         </div>
       <% end %>
     </div>
