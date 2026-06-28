@@ -13,6 +13,11 @@
         <%= render Admin::FieldComponent.new(form: form, attribute: :cta_label) %>
         <%= render Admin::FieldComponent.new(form: form, attribute: :cta_url) %>
 
+        <% if @hero_content.image.attached? %>
+          <%= image_tag @hero_content.image, class: "rounded mb-2", style: "max-height: 96px;" %>
+        <% end %>
+        <%= render Admin::FieldComponent.new(form: form, attribute: :image, as: :file_field, accept: "image/png,image/jpeg,image/webp") %>
+
         <div class="d-flex gap-2">
           <%= form.submit "Save", class: "btn btn-brand" %>
           <%= link_to "Cancel", admin_root_path, class: "btn btn-outline-secondary" %>

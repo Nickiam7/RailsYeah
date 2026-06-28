@@ -19,6 +19,9 @@
 
       <div class="col-lg-5">
         <div class="card shadow-lg border-0">
+          <% if image&.attached? %>
+            <%= image_tag image, class: "card-img-top", style: "max-height: 180px; object-fit: cover;" %>
+          <% end %>
           <div class="card-body p-4">
             <h2 class="h5 fw-bold mb-3">Course at a glance</h2>
             <ul class="list-unstyled mb-4">

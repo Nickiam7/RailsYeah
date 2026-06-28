@@ -35,6 +35,14 @@ class AdminTestimonialsTest < ActionDispatch::IntegrationTest
     assert_equal "Renamed", testimonials(:published_one).reload.name
   end
 
+  test "uploads an avatar image" do
+    file = fixture_file_upload("avatar.png", "image/png")
+    patch admin_testimonial_path(testimonials(:published_one)), params: { testimonial: { avatar: file } }
+
+    assert_redirected_to admin_testimonials_path
+    assert testimonials(:published_one).reload.avatar.attached?
+  end
+
   test "destroys a testimonial" do
     assert_difference -> { Testimonial.count }, -1 do
       delete admin_testimonial_path(testimonials(:published_one))

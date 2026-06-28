@@ -3,7 +3,7 @@
     {
       "warning_type": "Mass Assignment",
       "warning_code": 105,
-      "fingerprint": "5ae44d0e534c822b7775f10d28a6508bdc2f07ed53a0906141acf23a73bf671d",
+      "fingerprint": "1c0f2ffcad604712b91e7e0ef0477ea5016c215012f1960450316f9daa1acc91",
       "check_name": "PermitAttributes",
       "message": "Potentially dangerous key allowed for mass assignment",
       "file": "app/controllers/admin/testimonials_controller.rb",

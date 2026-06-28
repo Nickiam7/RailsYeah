@@ -12,6 +12,11 @@
         <%= render Admin::FieldComponent.new(form: form, attribute: :headline) %>
         <%= render Admin::FieldComponent.new(form: form, attribute: :bio, as: :text_area, rows: 4) %>
 
+        <% if @instructor.avatar.attached? %>
+          <%= image_tag @instructor.avatar, class: "rounded-circle mb-2", style: "height: 96px; width: 96px; object-fit: cover;" %>
+        <% end %>
+        <%= render Admin::FieldComponent.new(form: form, attribute: :avatar, as: :file_field, label: "Photo", accept: "image/png,image/jpeg,image/webp") %>
+
         <div class="d-flex gap-2">
           <%= form.submit "Save", class: "btn btn-brand" %>
           <%= link_to "Cancel", admin_root_path, class: "btn btn-outline-secondary" %>
