@@ -17,9 +17,11 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%# Vendored Bootstrap CSS first (base layer), then app styles so they win the cascade %>
+    <%# Vendored Bootstrap CSS first (base layer), then app styles, then the design-
+        system palette overlay (theme.css) last so its tokens win the cascade. %>
     <%= stylesheet_link_tag "bootstrap.min", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "theme", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
