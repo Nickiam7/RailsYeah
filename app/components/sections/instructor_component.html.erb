@@ -1,17 +1,25 @@
-<section id="instructor" class="py-5">
+<section id="instructor" class="section">
   <div class="container">
-    <h2 class="h3 fw-bold mb-4">Your instructor</h2>
-    <div class="d-flex flex-column flex-sm-row gap-3 align-items-sm-start">
-      <% if instructor.avatar.attached? %>
-        <%= image_tag instructor.avatar, class: "rounded-circle flex-shrink-0", style: "height: 96px; width: 96px; object-fit: cover;" %>
-      <% end %>
-      <div>
-        <p class="h5 fw-bold mb-1"><%= instructor.name %></p>
+    <%= render Heading::SectionHeadingComponent.new(eyebrow: "Instructor", title: "Meet your instructor") %>
+
+    <div class="d-flex flex-column flex-md-row align-items-md-center gap-4 mt-2">
+      <div class="flex-shrink-0">
+        <% if instructor.avatar.attached? %>
+          <%= image_tag instructor.avatar, alt: instructor.name, class: "instructor-avatar rounded-circle" %>
+        <% else %>
+          <span class="instructor-avatar instructor-avatar-placeholder rounded-circle d-inline-flex align-items-center justify-content-center" aria-hidden="true">
+            <%= instructor.name.to_s.first %>
+          </span>
+        <% end %>
+      </div>
+
+      <div class="measure">
+        <p class="h4 fw-bold mb-1"><%= instructor.name %></p>
         <% if instructor.headline.present? %>
-          <p class="text-body-secondary"><%= instructor.headline %></p>
+          <p class="text-accent fw-semibold mb-3"><%= instructor.headline %></p>
         <% end %>
         <% if instructor.bio.present? %>
-          <div class="rich-text-content mb-0" style="max-width: 48rem;"><%= helpers.rich_text(instructor.bio) %></div>
+          <div class="rich-text-content mb-0"><%= helpers.rich_text(instructor.bio) %></div>
         <% end %>
       </div>
     </div>
