@@ -69,4 +69,110 @@
   --brand: var(--color-accent);
   --brand-rgb: var(--color-accent-rgb);
   --brand-dark: var(--color-accent-strong);
+
+  /* ==========================================================================
+   * Type scale (Story #2953) — a modular (~1.25) scale for a confident, modern
+   * hierarchy. Sizes are rem; consume via the tokens or the utilities below.
+   * ======================================================================== */
+  --fs-eyebrow: 0.8125rem;   /* 13px — uppercase section eyebrows / badges */
+  --fs-small: 0.875rem;      /* 14px — captions, meta */
+  --fs-body: 1rem;           /* 16px — base body copy */
+  --fs-lead: 1.25rem;        /* 20px — intro / lead paragraphs */
+  --fs-h3: 1.5rem;           /* 24px — sub-headings */
+  --fs-h2: 2rem;             /* 32px — section titles */
+  --fs-h1: 2.75rem;          /* 44px — page titles */
+  --fs-display: 3.5rem;      /* 56px — hero / big rubyonrails.org-style titles */
+
+  /* Line heights */
+  --lh-tight: 1.08;          /* display + bold headings */
+  --lh-snug: 1.25;           /* sub-headings */
+  --lh-base: 1.6;            /* body copy */
+
+  /* Font weights (--fw-black matches the rubyonrails.org bold titles) */
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-black: 800;
+
+  /* Letter spacing */
+  --ls-tight: -0.02em;       /* large bold headings */
+  --ls-eyebrow: 0.08em;      /* uppercase eyebrows */
+
+  /* ==========================================================================
+   * Spacing rhythm (Story #2953) — consistent section padding + whitespace.
+   * ======================================================================== */
+  --space-section-y: 5.5rem;      /* desktop section vertical padding */
+  --space-section-y-sm: 3.5rem;   /* mobile section vertical padding */
+  --space-stack: 1.25rem;         /* default gap between stacked elements */
+  --space-gutter: 1.5rem;         /* grid / column gutter */
+  --measure: 42rem;               /* comfortable max line length for prose */
+}
+
+/* ============================================================================
+ * Design-system utilities (Story #2953)
+ * Layered on top of Bootstrap — no source overrides. Components compose these;
+ * nothing here restyles Bootstrap globals.
+ * ==========================================================================
+ *
+ * Usage examples:
+ *   <section class="section"> ... </section>            generous responsive padding
+ *   <p class="eyebrow">What you'll learn</p>            uppercase accent label
+ *   <h2 class="heading-display text-accent">…</h2>      bold red section title
+ *   <h1 class="heading-display heading-display-xl">…</h1> hero-scale title
+ *   <p class="lead-copy">…</p>                          muted supporting paragraph
+ */
+
+/* Section rhythm — responsive vertical padding for the generous whitespace look. */
+.section {
+  padding-block: var(--space-section-y-sm);
+}
+@media (min-width: 768px) {
+  .section {
+    padding-block: var(--space-section-y);
+  }
+}
+
+/* Eyebrow — small uppercase accent label above a section title. */
+.eyebrow {
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
+
+/* Bold display/section titles — the rubyonrails.org "Everything you need." look.
+ * Pair with .text-accent for the red treatment; size with the modifier or a
+ * Bootstrap size class. */
+.heading-display {
+  font-weight: var(--fw-black);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  font-size: var(--fs-h2);
+}
+.heading-display-lg {
+  font-size: var(--fs-h1);
+}
+.heading-display-xl {
+  font-size: var(--fs-display);
+}
+
+/* Accent color helper — mirrors --color-accent without touching Bootstrap's
+ * .text-primary. */
+.text-accent {
+  color: var(--color-accent) !important;
+}
+
+/* Lead / supporting paragraph under a heading. */
+.lead-copy {
+  font-size: var(--fs-lead);
+  line-height: var(--lh-base);
+  color: var(--color-text-muted);
+}
+
+/* Constrain prose to a comfortable measure. */
+.measure {
+  max-width: var(--measure);
 }
