@@ -1,0 +1,72 @@
+/*
+ * theme.css — Design-system palette overlay (Story #2952)
+ * ----------------------------------------------------------------------------
+ * A CSS custom-properties layer on top of the vendored bootstrap.min.css. No
+ * SCSS, no Node/bundler build step — just :root variables served by Propshaft.
+ *
+ * Palette drawn from the redesign references:
+ *   - rubyonrails.org homepage (tmp/refs reference: layout.png): bold Rails-red
+ *     headers, soft warm pink-gray section backgrounds, dark warm code cards,
+ *     near-black neutral text.
+ *   - the course's ruby + Chrome hero art (ruby-chrome.png): warm ruby/gold tones.
+ *
+ * This file is the foundation: it defines the palette tokens and remaps a
+ * conservative set of Bootstrap's global --bs-* variables onto them so the
+ * vendored Bootstrap adopts the new look. Per-section restyling (code cards,
+ * section headings, eyebrows, etc.) lands in the follow-up stories, consuming
+ * the --color-* tokens defined here.
+ */
+
+:root {
+  /* ==========================================================================
+   * Palette tokens
+   * ======================================================================== */
+
+  /* --- Rails-red accent (rubyonrails.org signature red) ------------------- */
+  --color-accent: #d30001;            /* headers, links, primary CTAs */
+  --color-accent-rgb: 211, 0, 1;
+  --color-accent-strong: #a90001;     /* hover / pressed */
+  --color-accent-soft: #fbe7e6;       /* tinted chips, badges, subtle fills */
+
+  /* --- Warm background tints (soft pink-gray bands) ----------------------- */
+  --color-surface: #ffffff;           /* base / card surface */
+  --color-surface-warm: #f6efed;      /* warm-tinted section background */
+  --color-surface-warm-alt: #fbf6f4;  /* lighter warm tint, alternating sections */
+  --color-surface-cream: #fdfbf9;     /* near-white cream */
+
+  /* --- Dark code-card surfaces (deep warm charcoal) ----------------------- */
+  --color-surface-dark: #1e1a1a;      /* code blocks / dark sections */
+  --color-surface-dark-raised: #2a2423;
+  --color-on-dark: #ededed;           /* text on dark surfaces */
+  --color-on-dark-muted: #a59f9f;     /* muted text on dark surfaces */
+
+  /* --- Neutral text ------------------------------------------------------- */
+  --color-text: #1a1a1a;              /* primary headings + body */
+  --color-text-muted: #6b6b6b;        /* secondary / supporting text */
+  --color-border: #e8e1df;            /* hairline borders on warm surfaces */
+
+  /* ==========================================================================
+   * Bootstrap overlay — remap core --bs-* theme variables onto the palette so
+   * the vendored Bootstrap (no recompile) inherits the new colors. Component
+   * and per-section styling builds on the --color-* tokens above.
+   * ======================================================================== */
+  --bs-body-bg: var(--color-surface);
+  --bs-body-color: var(--color-text);
+  --bs-secondary-color: var(--color-text-muted);
+  --bs-tertiary-bg: var(--color-surface-warm);   /* .bg-body-tertiary bands -> warm */
+  --bs-border-color: var(--color-border);
+  --bs-emphasis-color: var(--color-text);
+
+  --bs-primary: var(--color-accent);
+  --bs-primary-rgb: var(--color-accent-rgb);
+
+  --bs-link-color: var(--color-accent);
+  --bs-link-color-rgb: var(--color-accent-rgb);
+  --bs-link-hover-color: var(--color-accent-strong);
+  --bs-link-hover-color-rgb: var(--color-accent-rgb);
+
+  /* Unify the existing brand-button token (application.css) onto the new accent. */
+  --brand: var(--color-accent);
+  --brand-rgb: var(--color-accent-rgb);
+  --brand-dark: var(--color-accent-strong);
+}
