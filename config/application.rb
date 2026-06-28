@@ -33,5 +33,8 @@ module RailsYeah
     config.view_component.generate.sidecar = false  # template sits beside the .rb; namespacing already gives each component its own folder
     # Previews are enabled in development/test by default and discovered in
     # test/components/previews, served at /rails/view_components.
+    # Render previews in a layout that loads Bootstrap + the theme overlay so
+    # components preview with the real site styling.
+    config.view_component.previews.default_layout = "component_preview"
   end
 end

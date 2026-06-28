@@ -176,3 +176,30 @@
 .measure {
   max-width: var(--measure);
 }
+
+/* ============================================================================
+ * Badge / eyebrow pill (Story #2954) — Badge::BadgeComponent. A small uppercase
+ * pill chip; variants map to the palette tokens.
+ * ========================================================================== */
+.badge-pill {
+  display: inline-block;
+  padding: 0.4em 0.9em;
+  border-radius: 50rem;
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  line-height: 1;
+}
+.badge-pill-accent {
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent-strong);
+}
+.badge-pill-light {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+.badge-pill-dark {
+  background-color: var(--color-surface-dark);
+  color: var(--color-on-dark);
+}
