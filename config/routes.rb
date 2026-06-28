@@ -17,6 +17,13 @@ Rails.application.routes.draw do
   # Admin area — authenticated, admin-only (see Admin::BaseController + AdminPolicy).
   namespace :admin do
     root to: "dashboard#show"
+
+    resource :hero_content, only: %i[edit update]
+    resource :instructor, only: %i[edit update]
+    resources :learning_objectives, except: %i[show]
+    resources :curriculum_sections, except: %i[show]
+    resources :testimonials, except: %i[show]
+    resources :faq_items, except: %i[show]
   end
 
   # Defines the root path route ("/")

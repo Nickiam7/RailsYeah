@@ -15,13 +15,12 @@ class Admin::NavComponent < ApplicationComponent
 
   attr_reader :user_email
 
-  # Forward-looking — these point at "#" until the content CRUD lands (#2944/#2945).
   def sections
     [
-      Link.new("Hero", "#"),
-      Link.new("Testimonials", "#"),
-      Link.new("FAQ", "#"),
-      Link.new("Curriculum", "#")
+      Link.new("Hero", edit_admin_hero_content_path),
+      Link.new("Curriculum", admin_curriculum_sections_path),
+      Link.new("Testimonials", admin_testimonials_path),
+      Link.new("FAQ", admin_faq_items_path)
     ]
   end
 end

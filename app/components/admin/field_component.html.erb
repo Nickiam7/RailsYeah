@@ -1,0 +1,11 @@
+<% if as == :check_box %>
+  <div class="form-check mb-3">
+    <%= form.check_box attribute, options.reverse_merge(class: "form-check-input") %>
+    <%= form.label attribute, label_text, class: "form-check-label" %>
+  </div>
+<% else %>
+  <div class="mb-3">
+    <%= form.label attribute, label_text, class: "form-label" %>
+    <%= form.public_send(as, attribute, options.reverse_merge(class: "form-control")) %>
+  </div>
+<% end %>

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 fw-bold mb-0">What you'll learn</h1>
+    <%= link_to "New objective", new_admin_learning_objective_path, class: "btn btn-brand" %>
+  </div>
+
+  <div class="card shadow-sm">
+    <table class="table table-hover align-middle mb-0">
+      <thead>
+        <tr><th>Description</th><th class="text-end">Position</th><th class="text-end">Actions</th></tr>
+      </thead>
+      <tbody>
+        <% @learning_objectives.each do |objective| %>
+          <tr id="<%= dom_id(objective) %>">
+            <td><%= objective.description %></td>
+            <td class="text-end"><%= objective.position %></td>
+            <td class="text-end text-nowrap">
+              <%= link_to "Edit", edit_admin_learning_objective_path(objective), class: "btn btn-sm btn-outline-secondary" %>
+              <%= link_to "Delete", admin_learning_objective_path(objective), class: "btn btn-sm btn-outline-danger",
+                    data: { turbo_method: :delete, turbo_confirm: "Delete this objective?" } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
