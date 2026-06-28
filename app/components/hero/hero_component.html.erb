@@ -18,10 +18,19 @@
       </div>
 
       <div class="col-lg-6">
-        <% if image&.attached? %>
-          <%= image_tag image, alt: title, class: "img-fluid rounded-4 shadow-lg mb-4" %>
-        <% end %>
-        <%= render(Code::CodeCardComponent.new(filename: "app/models/vault.rb")) { code_snippet } %>
+        <%# Course-preview thumbnail. Clicking will open a video modal (wired in a
+            follow-up); this story is layout only. %>
+        <button type="button" class="hero-preview" aria-label="Play the course preview">
+          <% if image&.attached? %>
+            <%= image_tag image, alt: "Course preview", class: "hero-preview-img" %>
+          <% else %>
+            <%= image_tag "ruby-chrome.png", alt: "Ruby on Rails 8 and Hotwire course preview", class: "hero-preview-img" %>
+          <% end %>
+          <span class="hero-preview-play" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+          </span>
+          <span class="hero-preview-label">Preview this course</span>
+        </button>
       </div>
     </div>
 

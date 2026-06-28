@@ -299,6 +299,64 @@
   color: #e0a800; /* amber stars, legible on the warm background */
 }
 
+/* Hero course-preview thumbnail (ruby-chrome.png) — a clickable video preview
+ * (Udemy/ZTM style). Click-to-play modal is wired in a follow-up. */
+.hero-preview {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+.hero-preview-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.hero-preview-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.92);
+  color: var(--color-accent);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.35);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+.hero-preview-play svg {
+  margin-left: 4px; /* optically center the triangle */
+}
+.hero-preview:hover .hero-preview-play,
+.hero-preview:focus-visible .hero-preview-play {
+  transform: translate(-50%, -50%) scale(1.08);
+  background-color: #fff;
+}
+.hero-preview-label {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 2rem 1rem 0.9rem;
+  color: #fff;
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-small);
+  text-align: center;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+}
+.hero-preview:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
 /* ============================================================================
  * Check badge (Story #2958) — accent checkmark for objective / feature lists.
  * ========================================================================== */
