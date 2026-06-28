@@ -34,7 +34,7 @@ HeroContent.first_or_create!(
 
 Instructor.first_or_create!(
   name: Site::INSTRUCTOR,
-  headline: "Ruby on Rails instructor",
+  headline: "Senior Software Engineer / Ruby on Rails instructor",
   bio: "Nick builds full-stack Ruby on Rails applications and teaches the modern, " \
        "Hotwire-first way to ship them — from secure JSON APIs to browser extensions."
 )
