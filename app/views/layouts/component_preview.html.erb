@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Component preview &middot; <%= Site::NAME %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%# Same CSS stack as the public site so previews reflect real styling. %>
+    <%= stylesheet_link_tag "bootstrap.min" %>
+    <%= stylesheet_link_tag "application" %>
+    <%= stylesheet_link_tag "theme" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="bg-body">
+    <div class="container py-5">
+      <%= yield %>
+    </div>
+  </body>
+</html>

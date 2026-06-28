@@ -1,0 +1,9 @@
+<div class="section-heading text-<%= align %>">
+  <% if eyebrow.present? %>
+    <p class="eyebrow"><%= eyebrow %></p>
+  <% end %>
+  <%= content_tag heading_tag, title, class: title_classes %>
+  <% if copy.present? %>
+    <p class="<%= copy_classes %>"><%= copy %></p>
+  <% end %>
+</div>
