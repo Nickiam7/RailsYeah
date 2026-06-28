@@ -99,6 +99,9 @@
   --ls-tight: -0.02em;       /* large bold headings */
   --ls-eyebrow: 0.08em;      /* uppercase eyebrows */
 
+  /* Monospace stack — code cards */
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
   /* ==========================================================================
    * Spacing rhythm (Story #2953) — consistent section padding + whitespace.
    * ======================================================================== */
@@ -203,3 +206,57 @@
   background-color: var(--color-surface-dark);
   color: var(--color-on-dark);
 }
+
+/* ============================================================================
+ * Code card (Story #2955) — Code::CodeCardComponent. A dark, rubyonrails.org-style
+ * code visual: filename header bar + code body. Token colors are applied to
+ * hand-marked .tok-* spans (no JS highlighter / build step).
+ * ========================================================================== */
+.code-card {
+  background-color: var(--color-surface-dark);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.25);
+}
+.code-card-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1rem;
+  background-color: var(--color-surface-dark-raised);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.code-card-dots {
+  display: inline-flex;
+  gap: 0.35rem;
+}
+.code-card-dots span {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.18);
+}
+.code-card-filename {
+  color: var(--color-on-dark-muted);
+  font-size: var(--fs-small);
+  font-family: var(--font-mono);
+}
+.code-card-body {
+  margin: 0;
+  padding: 1.25rem;
+  color: var(--color-on-dark);
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  overflow-x: auto;
+}
+.code-card-body code {
+  font-family: var(--font-mono);
+}
+
+/* Token colors for hand-marked snippets (a calm dark theme; keyword ties to red). */
+.tok-keyword  { color: #ff7a85; }
+.tok-constant { color: #f7c469; }
+.tok-string   { color: #9ece6a; }
+.tok-symbol   { color: #7dcfff; }
+.tok-method   { color: #7aa2f7; }
+.tok-comment  { color: #6b7280; font-style: italic; }
