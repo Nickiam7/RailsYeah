@@ -19,7 +19,7 @@ module Admin
     private
 
     def hero_content_params
-      params.require(:hero_content).permit(:title, :subtitle, :cta_label, :cta_url)
+      params.require(:hero_content).permit(:title, :subtitle, :cta_label, :cta_url, :image)
     end
   end
 end

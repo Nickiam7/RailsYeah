@@ -1,5 +1,8 @@
 class Instructor < ApplicationRecord
+  include ImageAttachable
+
   validates :name, presence: true
+  attached_image :avatar
 
   # Singleton-ish: the landing page renders the single configured instructor.
   def self.current

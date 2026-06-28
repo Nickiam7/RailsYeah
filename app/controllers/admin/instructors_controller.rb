@@ -19,7 +19,7 @@ module Admin
     private
 
     def instructor_params
-      params.require(:instructor).permit(:name, :headline, :bio)
+      params.require(:instructor).permit(:name, :headline, :bio, :avatar)
     end
   end
 end

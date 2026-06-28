@@ -46,7 +46,7 @@ module Admin
     end
 
     def testimonial_params
-      params.require(:testimonial).permit(:name, :role, :quote, :rating, :position, :published)
+      params.require(:testimonial).permit(:name, :role, :quote, :rating, :position, :published, :avatar)
     end
   end
 end

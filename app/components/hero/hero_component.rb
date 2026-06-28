@@ -7,18 +7,19 @@ class Hero::HeroComponent < ApplicationComponent
   Stat = Data.define(:label, :value)
 
   def initialize(title: Site::COURSE, tagline: Site::TAGLINE, instructor: Site::INSTRUCTOR,
-                 rating: Site::RATING, cta_text: "Enroll on Udemy", cta_url: Site::UDEMY_URL)
+                 rating: Site::RATING, cta_text: "Enroll on Udemy", cta_url: Site::UDEMY_URL, image: nil)
     @title = title
     @tagline = tagline
     @instructor = instructor
     @rating = rating
     @cta_text = cta_text
     @cta_url = cta_url
+    @image = image
   end
 
   private
 
-  attr_reader :title, :tagline, :instructor, :rating, :cta_text, :cta_url
+  attr_reader :title, :tagline, :instructor, :rating, :cta_text, :cta_url, :image
 
   def stats
     [

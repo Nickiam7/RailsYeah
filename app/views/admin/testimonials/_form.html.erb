@@ -12,6 +12,11 @@
       <%= render Admin::FieldComponent.new(form: form, attribute: :position, as: :number_field) %>
       <%= render Admin::FieldComponent.new(form: form, attribute: :published, as: :check_box) %>
 
+      <% if testimonial.avatar.attached? %>
+        <%= image_tag testimonial.avatar, class: "rounded mb-2", style: "height: 64px; width: 64px; object-fit: cover;" %>
+      <% end %>
+      <%= render Admin::FieldComponent.new(form: form, attribute: :avatar, as: :file_field, label: "Avatar", accept: "image/png,image/jpeg,image/webp") %>
+
       <div class="d-flex gap-2">
         <%= form.submit "Save", class: "btn btn-brand" %>
         <%= link_to "Cancel", admin_testimonials_path, class: "btn btn-outline-secondary" %>

@@ -10,10 +10,17 @@
                 <div class="hero-rating mb-2" aria-label="<%= testimonial.rating %> out of 5"><%= stars(testimonial.rating) %></div>
               <% end %>
               <p class="flex-grow-1">&ldquo;<%= testimonial.quote %>&rdquo;</p>
-              <p class="mb-0 fw-semibold"><%= testimonial.name %></p>
-              <% if testimonial.role.present? %>
-                <p class="small text-body-secondary mb-0"><%= testimonial.role %></p>
-              <% end %>
+              <div class="d-flex align-items-center gap-2">
+                <% if testimonial.avatar.attached? %>
+                  <%= image_tag testimonial.avatar, class: "rounded-circle", style: "height: 40px; width: 40px; object-fit: cover;" %>
+                <% end %>
+                <div>
+                  <p class="mb-0 fw-semibold"><%= testimonial.name %></p>
+                  <% if testimonial.role.present? %>
+                    <p class="small text-body-secondary mb-0"><%= testimonial.role %></p>
+                  <% end %>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -181,6 +181,19 @@ credential** — `db:seed` raises if it's missing — plus the Postmark token fo
 The only env var a production host needs is `RAILS_MASTER_KEY` (the rest is in the
 encrypted store).
 
+## File storage (ActiveStorage)
+
+Image uploads use ActiveStorage. Editable from the admin: the **hero image**,
+**instructor photo**, and **testimonial avatars** — validated to PNG/JPEG/WebP
+and ≤ 5 MB (`app/models/concerns/image_attachable.rb`). Images render on the
+public landing page.
+
+- **Dev / test:** the local `Disk` service (`storage/` and `tmp/storage/`).
+- **Production (DO-ready):** uncomment the `digitalocean` service in
+  `config/storage.yml`, add `gem "aws-sdk-s3"`, set
+  `config.active_storage.service = :digitalocean`, and add the Spaces secrets via
+  `bin/rails credentials:edit` (`digitalocean: endpoint:/region:/bucket:/access_key_id:/secret_access_key:`).
+
 ## Configuration
 
 - Database config: `config/database.yml` (dev/test/prod).
