@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg site-navbar sticky-top" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg site-navbar sticky-top" data-bs-theme="light">
   <div class="container">
     <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="/">
       <svg class="site-navbar__mark" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -17,26 +17,25 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <% links.each do |link| %>
           <li class="nav-item">
-            <a class="nav-link" href="<%= link.href %>"><%= link.label %></a>
+            <a class="nav-link px-lg-3" href="<%= link.href %>"><%= link.label %></a>
           </li>
         <% end %>
       </ul>
-      <% if signed_in %>
-        <%= link_to "Sign out", destroy_user_session_path,
-              class: "btn btn-outline-light ms-lg-3 mt-2 mt-lg-0", data: { turbo_method: :delete } %>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <%= link_to( "Admin", admin_root_path, class: "nav-link") if Rails.env.development? %>
-          </li>
-        </ul>
-      <% else %>
-        <a class="btn btn-brand ms-lg-3 mt-2 mt-lg-0" href="<%= cta_url %>" target="_blank" rel="noopener"><%= cta_text %></a>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <%= link_to( "Login", new_user_session_path, class: "ms-3 nav-link text-light") if Rails.env.development? %>
-          </li>
-        </ul>
-      <% end %>
+
+      <div class="d-flex align-items-center gap-2 ms-lg-3 mt-2 mt-lg-0">
+        <% if signed_in %>
+          <%= link_to "Sign out", destroy_user_session_path,
+                class: "btn btn-outline-secondary", data: { turbo_method: :delete } %>
+          <% if Rails.env.development? %>
+            <%= link_to "Admin", admin_root_path, class: "nav-link" %>
+          <% end %>
+        <% else %>
+          <a class="btn btn-brand px-3" href="<%= cta_url %>" target="_blank" rel="noopener"><%= cta_text %></a>
+          <% if Rails.env.development? %>
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </nav>
