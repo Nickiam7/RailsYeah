@@ -286,3 +286,15 @@
 .site-navbar .nav-link.active {
   color: var(--color-accent);
 }
+
+/* ============================================================================
+ * Hero restyle (Story #2957) — light, warm rubyonrails.org-style hero. Overrides
+ * the dark gradient defined in application.css (public site only).
+ * ========================================================================== */
+.site-hero {
+  background: linear-gradient(180deg, var(--color-surface-warm) 0%, var(--color-surface) 72%);
+  color: var(--color-text);
+}
+.site-hero .hero-rating {
+  color: #e0a800; /* amber stars, legible on the warm background */
+}
