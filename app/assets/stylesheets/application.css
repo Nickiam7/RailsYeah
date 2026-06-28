@@ -69,3 +69,16 @@
 .hero-rating {
   color: #ffc107;
 }
+
+/* Rich-text editor (Tiptap) — admin content forms (#2947) */
+.rich-text-editor .ProseMirror {
+  min-height: 8rem;
+  outline: none;
+}
+.rich-text-editor .ProseMirror > :last-child {
+  margin-bottom: 0;
+}
+/* Public rendering of saved rich-text content */
+.rich-text-content :last-child {
+  margin-bottom: 0;
+}

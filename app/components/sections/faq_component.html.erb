@@ -11,7 +11,7 @@
             </button>
           </h3>
           <div id="faq<%= index %>" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body"><%= item.answer %></div>
+            <div class="accordion-body rich-text-content"><%= helpers.rich_text(item.answer) %></div>
           </div>
         </div>
       <% end %>

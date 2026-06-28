@@ -10,7 +10,7 @@
       <div class="card-body" style="max-width: 42rem;">
         <%= render Admin::FieldComponent.new(form: form, attribute: :name) %>
         <%= render Admin::FieldComponent.new(form: form, attribute: :headline) %>
-        <%= render Admin::FieldComponent.new(form: form, attribute: :bio, as: :text_area, rows: 4) %>
+        <%= render Admin::RichTextFieldComponent.new(form: form, attribute: :bio) %>
 
         <% if @instructor.avatar.attached? %>
           <%= image_tag @instructor.avatar, class: "rounded-circle mb-2", style: "height: 96px; width: 96px; object-fit: cover;" %>

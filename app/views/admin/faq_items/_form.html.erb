@@ -6,7 +6,7 @@
   <div class="card shadow-sm">
     <div class="card-body" style="max-width: 42rem;">
       <%= render Admin::FieldComponent.new(form: form, attribute: :question) %>
-      <%= render Admin::FieldComponent.new(form: form, attribute: :answer, as: :text_area, rows: 4) %>
+      <%= render Admin::RichTextFieldComponent.new(form: form, attribute: :answer) %>
       <%= render Admin::FieldComponent.new(form: form, attribute: :position, as: :number_field) %>
       <%= render Admin::FieldComponent.new(form: form, attribute: :published, as: :check_box) %>
 
