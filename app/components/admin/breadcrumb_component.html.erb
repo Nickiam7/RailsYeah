@@ -1,0 +1,11 @@
+<nav class="container mt-3" aria-label="breadcrumb">
+  <ol class="breadcrumb mb-0">
+    <% crumbs.each do |crumb| %>
+      <% if crumb.path %>
+        <li class="breadcrumb-item"><%= link_to crumb.label, crumb.path %></li>
+      <% else %>
+        <li class="breadcrumb-item active" aria-current="page"><%= crumb.label %></li>
+      <% end %>
+    <% end %>
+  </ol>
+</nav>
