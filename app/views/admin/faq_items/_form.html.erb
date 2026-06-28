@@ -1,0 +1,19 @@
+<%= form_with model: [ :admin, faq_item ] do |form| %>
+  <% if faq_item.errors.any? %>
+    <div class="alert alert-danger"><%= pluralize(faq_item.errors.count, "error") %> prevented saving.</div>
+  <% end %>
+
+  <div class="card shadow-sm">
+    <div class="card-body" style="max-width: 42rem;">
+      <%= render Admin::FieldComponent.new(form: form, attribute: :question) %>
+      <%= render Admin::FieldComponent.new(form: form, attribute: :answer, as: :text_area, rows: 4) %>
+      <%= render Admin::FieldComponent.new(form: form, attribute: :position, as: :number_field) %>
+      <%= render Admin::FieldComponent.new(form: form, attribute: :published, as: :check_box) %>
+
+      <div class="d-flex gap-2">
+        <%= form.submit "Save", class: "btn btn-brand" %>
+        <%= link_to "Cancel", admin_faq_items_path, class: "btn btn-outline-secondary" %>
+      </div>
+    </div>
+  </div>
+<% end %>

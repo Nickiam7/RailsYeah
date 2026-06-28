@@ -1,0 +1,17 @@
+<%= form_with model: [ :admin, learning_objective ] do |form| %>
+  <% if learning_objective.errors.any? %>
+    <div class="alert alert-danger"><%= pluralize(learning_objective.errors.count, "error") %> prevented saving.</div>
+  <% end %>
+
+  <div class="card shadow-sm">
+    <div class="card-body" style="max-width: 42rem;">
+      <%= render Admin::FieldComponent.new(form: form, attribute: :description) %>
+      <%= render Admin::FieldComponent.new(form: form, attribute: :position, as: :number_field) %>
+
+      <div class="d-flex gap-2">
+        <%= form.submit "Save", class: "btn btn-brand" %>
+        <%= link_to "Cancel", admin_learning_objectives_path, class: "btn btn-outline-secondary" %>
+      </div>
+    </div>
+  </div>
+<% end %>

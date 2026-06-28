@@ -1,0 +1,19 @@
+<%= form_with model: [ :admin, curriculum_section ] do |form| %>
+  <% if curriculum_section.errors.any? %>
+    <div class="alert alert-danger"><%= pluralize(curriculum_section.errors.count, "error") %> prevented saving.</div>
+  <% end %>
+
+  <div class="card shadow-sm">
+    <div class="card-body" style="max-width: 42rem;">
+      <%= render Admin::FieldComponent.new(form: form, attribute: :title) %>
+      <%= render Admin::FieldComponent.new(form: form, attribute: :lectures_count, as: :number_field) %>
+      <%= render Admin::FieldComponent.new(form: form, attribute: :duration) %>
+      <%= render Admin::FieldComponent.new(form: form, attribute: :position, as: :number_field) %>
+
+      <div class="d-flex gap-2">
+        <%= form.submit "Save", class: "btn btn-brand" %>
+        <%= link_to "Cancel", admin_curriculum_sections_path, class: "btn btn-outline-secondary" %>
+      </div>
+    </div>
+  </div>
+<% end %>

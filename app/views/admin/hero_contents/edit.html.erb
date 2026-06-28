@@ -1,0 +1,23 @@
+<div class="container">
+  <h1 class="h3 fw-bold mb-4">Edit hero</h1>
+
+  <%= form_with model: @hero_content, url: admin_hero_content_path, method: :patch do |form| %>
+    <% if @hero_content.errors.any? %>
+      <div class="alert alert-danger"><%= pluralize(@hero_content.errors.count, "error") %> prevented saving.</div>
+    <% end %>
+
+    <div class="card shadow-sm">
+      <div class="card-body" style="max-width: 42rem;">
+        <%= render Admin::FieldComponent.new(form: form, attribute: :title) %>
+        <%= render Admin::FieldComponent.new(form: form, attribute: :subtitle, as: :text_area, rows: 3) %>
+        <%= render Admin::FieldComponent.new(form: form, attribute: :cta_label) %>
+        <%= render Admin::FieldComponent.new(form: form, attribute: :cta_url) %>
+
+        <div class="d-flex gap-2">
+          <%= form.submit "Save", class: "btn btn-brand" %>
+          <%= link_to "Cancel", admin_root_path, class: "btn btn-outline-secondary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
