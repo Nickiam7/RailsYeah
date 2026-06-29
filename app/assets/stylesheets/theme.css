@@ -311,8 +311,14 @@
   --bs-btn-active-border-color: var(--color-accent);
 }
 
-/* Hero stat row (under the CTAs) — label + value with subtle vertical dividers. */
+/* Hero stat card (under the CTAs) — label + value with subtle vertical dividers,
+ * on a white card with a soft drop shadow. */
 .hero-stats {
+  background-color: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 0.85rem;
+  box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.08);
+  padding: 1.15rem 1.5rem;
   row-gap: 1rem;
 }
 .hero-stat {
