@@ -2,20 +2,30 @@
   <div class="container">
     <%= render Heading::SectionHeadingComponent.new(eyebrow: "Course outcomes", title: "What you'll learn") %>
 
-    <div class="row g-4 mt-2">
-      <% objectives.each do |objective| %>
-        <div class="col-md-6">
-          <div class="d-flex gap-3 align-items-start">
-            <span class="check-badge flex-shrink-0" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor"
-                   stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 8.5l3.5 3.5L13 4" />
-              </svg>
-            </span>
-            <span><%= objective.description %></span>
-          </div>
+    <div class="row g-5 mt-2 align-items-start">
+      <div class="col-lg-6">
+        <ul class="list-unstyled mb-0">
+          <% objectives.each do |objective| %>
+            <li class="d-flex gap-3 align-items-start mb-3">
+              <span class="check-badge flex-shrink-0" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                     stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 8.5l3.5 3.5L13 4" />
+                </svg>
+              </span>
+              <span><%= objective.description %></span>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="d-flex flex-column gap-3">
+          <% code_cards.each do |card| %>
+            <%= render(Code::CodeCardComponent.new(filename: card.filename)) { card.code } %>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
   </div>
 </section>
