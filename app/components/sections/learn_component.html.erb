@@ -3,7 +3,7 @@
     <%= render Heading::SectionHeadingComponent.new(eyebrow: "Course outcomes", title: "What you'll learn") %>
 
     <div class="row g-5 mt-2">
-      <div class="col-lg-6 d-flex flex-column">
+      <div class="col-lg-5 d-flex flex-column">
         <ul class="list-unstyled mb-0 d-flex flex-column flex-grow-1 justify-content-between gap-4">
           <% objectives.each do |objective| %>
             <li class="d-flex gap-3 align-items-start">
@@ -19,12 +19,8 @@
         </ul>
       </div>
 
-      <div class="col-lg-6">
-        <div class="d-flex flex-column gap-3">
-          <% code_cards.each do |card| %>
-            <%= render(Code::CodeCardComponent.new(filename: card.filename)) { card.code } %>
-          <% end %>
-        </div>
+      <div class="col-lg-7">
+        <%= render Code::EditorComponent.new(files: code_cards) %>
       </div>
     </div>
   </div>

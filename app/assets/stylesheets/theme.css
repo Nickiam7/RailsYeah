@@ -514,3 +514,70 @@
 .footer-divider {
   border-color: rgba(255, 255, 255, 0.1);
 }
+
+/* ============================================================================
+ * Tabbed code editor (Code::EditorComponent) — VS Code-style panel: a tab bar of
+ * files over switchable, fixed-height code panes.
+ * ========================================================================== */
+.code-editor {
+  background-color: var(--color-surface-dark);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.25);
+}
+.code-editor-tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: #15110f;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.code-editor-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.95rem;
+  border: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  background: transparent;
+  color: var(--color-on-dark-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  white-space: nowrap;
+  cursor: pointer;
+}
+.code-editor-tab.active {
+  background-color: var(--color-surface-dark);
+  color: var(--color-on-dark);
+}
+.code-editor-tab:hover:not(.active) {
+  color: var(--color-on-dark);
+}
+.code-editor-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.code-editor-dot--rb { background-color: #cc342d; }
+.code-editor-dot--js { background-color: #f1e05a; }
+.code-editor-dot--css { background-color: #563d7c; }
+.code-editor-dot--txt { background-color: #8a8a8a; }
+.code-editor-panes {
+  height: 24rem;
+  overflow-y: auto;
+}
+.code-editor-body {
+  margin: 0;
+  padding: 1.25rem;
+  color: var(--color-on-dark);
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  font-family: var(--font-mono);
+}
+.code-editor-body code {
+  font-family: var(--font-mono);
+}
