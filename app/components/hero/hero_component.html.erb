@@ -15,6 +15,15 @@
           <a class="btn btn-brand btn-lg px-4" href="<%= cta_url %>" target="_blank" rel="noopener"><%= cta_text %></a>
           <a class="btn btn-white btn-lg px-4" href="<%= cta_url %>" target="_blank" rel="noopener">Preview the course</a>
         </div>
+
+        <div class="hero-stats d-flex flex-wrap mt-4 pt-2">
+          <% stats.each do |stat| %>
+            <div class="hero-stat">
+              <div class="eyebrow mb-1"><%= stat.label %></div>
+              <div class="h5 fw-bold mb-0"><%= stat.value %></div>
+            </div>
+          <% end %>
+        </div>
       </div>
 
       <div class="col-lg-6">
@@ -32,15 +41,6 @@
           <span class="hero-preview-label">Preview this course</span>
         </button>
       </div>
-    </div>
-
-    <div class="row g-4 mt-4 pt-4 border-top">
-      <% stats.each do |stat| %>
-        <div class="col-6 col-md-3">
-          <div class="eyebrow mb-1"><%= stat.label %></div>
-          <div class="h4 fw-bold mb-0"><%= stat.value %></div>
-        </div>
-      <% end %>
     </div>
   </div>
 </section>

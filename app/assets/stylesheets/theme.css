@@ -311,6 +311,20 @@
   --bs-btn-active-border-color: var(--color-accent);
 }
 
+/* Hero stat row (under the CTAs) — label + value with subtle vertical dividers. */
+.hero-stats {
+  row-gap: 1rem;
+}
+.hero-stat {
+  padding-inline: 1.25rem;
+}
+.hero-stat:first-child {
+  padding-left: 0;
+}
+.hero-stat:not(:first-child) {
+  border-left: 1px solid var(--color-border);
+}
+
 /* Hero course-preview thumbnail (ruby-chrome.png) — a clickable video preview
  * (Udemy/ZTM style). Click-to-play modal is wired in a follow-up. */
 .hero-preview {
