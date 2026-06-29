@@ -21,10 +21,31 @@ class Sections::LearnComponent < ApplicationComponent
   # Placeholder code-card snippets (course-flavored). Static, hand-marked markup.
   def code_cards
     [
-      Card.new("app/models/user.rb", <<~HTML.html_safe),
-        <span class="tok-keyword">class</span> <span class="tok-constant">User</span> &lt; <span class="tok-constant">ApplicationRecord</span>
-          <span class="tok-method">has_secure_password</span>
-          <span class="tok-method">has_many</span> <span class="tok-symbol">:vaults</span>, dependent: <span class="tok-symbol">:destroy</span>
+      Card.new("app/models/entry.rb", <<~HTML.html_safe),
+        <span class="tok-keyword">class</span> <span class="tok-constant">Entry</span> &lt; <span class="tok-constant">ApplicationRecord</span>
+          <span class="tok-method">belongs_to</span> <span class="tok-symbol">:user</span>
+
+          <span class="tok-method">validates</span> <span class="tok-symbol">:name</span>, <span class="tok-symbol">:username</span>, <span class="tok-symbol">:password</span>, presence: <span class="tok-keyword">true</span>
+          <span class="tok-method">validate</span> <span class="tok-symbol">:url_must_be_valid</span>
+
+          <span class="tok-method">encrypts</span> <span class="tok-symbol">:username</span>, deterministic: <span class="tok-keyword">true</span>
+          <span class="tok-method">encrypts</span> <span class="tok-symbol">:password</span>
+
+          <span class="tok-method">scope</span> <span class="tok-symbol">:search_name</span>, -&gt;(name) {
+            <span class="tok-method">where</span>(<span class="tok-string">"entries.name ILIKE ?"</span>, <span class="tok-string">"%\#{name}%"</span>) <span class="tok-keyword">if</span> name.<span class="tok-method">present?</span>
+          }
+
+          <span class="tok-keyword">def</span> <span class="tok-keyword">self</span>.<span class="tok-method">search</span>(name)
+            <span class="tok-method">search_name</span>(name).<span class="tok-method">order</span>(<span class="tok-symbol">:name</span>)
+          <span class="tok-keyword">end</span>
+
+          <span class="tok-keyword">private</span>
+
+          <span class="tok-keyword">def</span> <span class="tok-method">url_must_be_valid</span>
+            <span class="tok-keyword">unless</span> url.<span class="tok-method">include?</span>(<span class="tok-string">'http'</span> || <span class="tok-string">'https'</span>)
+              <span class="tok-method">errors</span>.<span class="tok-method">add</span>(<span class="tok-symbol">:url</span>, <span class="tok-string">'must be valid'</span>)
+            <span class="tok-keyword">end</span>
+          <span class="tok-keyword">end</span>
         <span class="tok-keyword">end</span>
       HTML
       Card.new("app/controllers/api/sessions_controller.rb", <<~HTML.html_safe),
