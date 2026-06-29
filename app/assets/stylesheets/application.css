@@ -33,6 +33,10 @@
   --bs-btn-active-bg: var(--brand-dark);
   --bs-btn-active-border-color: var(--brand-dark);
   --bs-btn-focus-shadow-rgb: var(--brand-rgb);
+  box-shadow: 0 0.35rem 0.85rem rgba(var(--brand-rgb), 0.35);
+}
+.btn-brand:hover {
+  box-shadow: 0 0.5rem 1.1rem rgba(var(--brand-rgb), 0.5);
 }
 
 /* Danger buttons use the brand red (matching the Enroll CTA) rather than

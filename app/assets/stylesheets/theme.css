@@ -22,11 +22,11 @@
    * Palette tokens
    * ======================================================================== */
 
-  /* --- Brand red accent --------------------------------------------------- */
-  --color-accent: #e21c2c;            /* headers, links, buttons */
-  --color-accent-rgb: 226, 28, 44;
-  --color-accent-strong: #b91724;     /* hover / pressed */
-  --color-accent-soft: #fce8e9;       /* tinted chips, badges, subtle fills */
+  /* --- Header / accent red (deeper) --------------------------------------- */
+  --color-accent: #d30001;            /* headers, links, eyebrows, badges */
+  --color-accent-rgb: 211, 0, 1;
+  --color-accent-strong: #a90001;     /* hover / pressed */
+  --color-accent-soft: #fbe7e6;       /* tinted chips, badges, subtle fills */
 
   /* --- Warm background tints (soft pink-gray bands) ----------------------- */
   --color-surface: #ffffff;           /* base / card surface */
@@ -65,10 +65,8 @@
   --bs-link-hover-color: var(--color-accent-strong);
   --bs-link-hover-color-rgb: var(--color-accent-rgb);
 
-  /* Unify the existing brand-button token (application.css) onto the new accent. */
-  --brand: var(--color-accent);
-  --brand-rgb: var(--color-accent-rgb);
-  --brand-dark: var(--color-accent-strong);
+  /* Buttons use their own brighter red (--brand #e21c2c, in application.css) —
+   * intentionally separate from the deeper header accent above. */
 
   /* ==========================================================================
    * Type scale (Story #2953) — a modular (~1.25) scale for a confident, modern
