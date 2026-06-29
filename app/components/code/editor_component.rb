@@ -21,4 +21,9 @@ class Code::EditorComponent < ApplicationComponent
   def language(filename)
     ::File.extname(filename).delete(".").presence || "txt"
   end
+
+  # Newline-separated line numbers for the gutter (1..N for the file's N lines).
+  def line_numbers(code)
+    (1..code.to_s.lines.size).to_a.join("\n")
+  end
 end

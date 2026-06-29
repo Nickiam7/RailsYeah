@@ -17,7 +17,10 @@
     <% files.each_with_index do |file, i| %>
       <div class="tab-pane<%= " active" if i.zero? %>" id="<%= uid %>-pane-<%= i %>"
            role="tabpanel" aria-labelledby="<%= uid %>-tab-<%= i %>">
-        <pre class="code-editor-body"><code><%= file.code %></code></pre>
+        <div class="code-editor-body">
+          <pre class="code-editor-gutter" aria-hidden="true"><%= line_numbers(file.code) %></pre>
+          <pre class="code-editor-code"><code><%= file.code %></code></pre>
+        </div>
       </div>
     <% end %>
   </div>
