@@ -599,3 +599,19 @@
 .code-editor-code code {
   font-family: var(--font-mono);
 }
+
+/* Glowing glass frame around the editor — a frosted, reddish-tinted thick border
+ * with a soft brand-red glow behind it. */
+.code-editor-frame {
+  padding: 0.6rem;
+  border-radius: 1.15rem;
+  background: linear-gradient(135deg, rgba(var(--brand-rgb), 0.16), rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(var(--brand-rgb), 0.22);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.45),
+    0 0 4rem rgba(var(--brand-rgb), 0.3),
+    0 1.5rem 3rem rgba(var(--brand-rgb), 0.16),
+    0 1rem 2rem rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}

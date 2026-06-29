@@ -20,7 +20,9 @@
       </div>
 
       <div class="col-lg-7">
-        <%= render Code::EditorComponent.new(files: code_cards) %>
+        <div class="code-editor-frame">
+          <%= render Code::EditorComponent.new(files: code_cards) %>
+        </div>
       </div>
     </div>
   </div>
