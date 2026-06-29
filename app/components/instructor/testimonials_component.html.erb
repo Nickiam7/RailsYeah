@@ -1,0 +1,9 @@
+<div class="instructor-cloud">
+  <% testimonials.each do |testimonial| %>
+    <figure class="instructor-cloud-card mb-0">
+      <span class="instructor-cloud-mark text-accent" aria-hidden="true">&ldquo;</span>
+      <p class="instructor-cloud-quote mb-2"><%= testimonial.quote %></p>
+      <figcaption class="small fw-semibold text-body-secondary mb-0">&mdash; <%= testimonial.name %></figcaption>
+    </figure>
+  <% end %>
+</div>

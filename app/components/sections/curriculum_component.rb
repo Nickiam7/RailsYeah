@@ -20,4 +20,10 @@ class Sections::CurriculumComponent < ApplicationComponent
       section.duration.presence
     ].compact.join(" · ")
   end
+
+  # Course-wide totals shown beside the heading (from the Site config, matching the
+  # hero stats).
+  def totals
+    "#{Site::LECTURES} lectures · #{Site::DURATION}"
+  end
 end

@@ -13,9 +13,11 @@ class Sections::LearnComponentTest < ViewComponent::TestCase
 
     assert_selector "section#learn"
     assert_selector ".section-heading h2", text: "What you'll learn"
-    assert_selector ".check-badge", count: 2
+    # One badge per objective, plus the trailing "And much more" link.
+    assert_selector ".check-badge", count: 3
     assert_text "Build a secure JSON API"
     assert_text "Ship a Chrome extension"
+    assert_link "And much more", href: Site::UDEMY_URL
   end
 
   def test_hidden_when_no_objectives
