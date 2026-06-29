@@ -16,9 +16,9 @@
  * variables rather than recompiling SCSS.
  * ------------------------------------------------------------------------- */
 :root {
-  --brand: #cc342d;
-  --brand-rgb: 204, 52, 45;
-  --brand-dark: #a02822;
+  --brand: #d30001;
+  --brand-rgb: 211, 0, 1;
+  --brand-dark: #a90001;
 }
 
 /* Brand-colored button variant (built on Bootstrap's button CSS variables). */
@@ -32,6 +32,29 @@
   --bs-btn-active-color: #fff;
   --bs-btn-active-bg: var(--brand-dark);
   --bs-btn-active-border-color: var(--brand-dark);
+  --bs-btn-focus-shadow-rgb: var(--brand-rgb);
+}
+
+/* Danger buttons use the brand red (matching the Enroll CTA) rather than
+ * Bootstrap's default red. Applies on both the public site and the admin. */
+.btn-danger {
+  --bs-btn-bg: var(--brand);
+  --bs-btn-border-color: var(--brand);
+  --bs-btn-hover-bg: var(--brand-dark);
+  --bs-btn-hover-border-color: var(--brand-dark);
+  --bs-btn-active-bg: var(--brand-dark);
+  --bs-btn-active-border-color: var(--brand-dark);
+  --bs-btn-disabled-bg: var(--brand);
+  --bs-btn-disabled-border-color: var(--brand);
+  --bs-btn-focus-shadow-rgb: var(--brand-rgb);
+}
+.btn-outline-danger {
+  --bs-btn-color: var(--brand);
+  --bs-btn-border-color: var(--brand);
+  --bs-btn-hover-bg: var(--brand);
+  --bs-btn-hover-border-color: var(--brand);
+  --bs-btn-active-bg: var(--brand);
+  --bs-btn-active-border-color: var(--brand);
   --bs-btn-focus-shadow-rgb: var(--brand-rgb);
 }
 
