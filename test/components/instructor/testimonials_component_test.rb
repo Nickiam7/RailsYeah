@@ -3,13 +3,13 @@
 require "test_helper"
 
 class Instructor::TestimonialsComponentTest < ViewComponent::TestCase
-  def test_renders_a_card_per_testimonial
-    quotes = [
-      Instructor::TestimonialsComponent::Quote.new("Great teacher.", "Sam"),
-      Instructor::TestimonialsComponent::Quote.new("Learned a ton.", "Riley")
+  def test_renders_a_card_per_review
+    reviews = [
+      Instructor::TestimonialsComponent::Review.new("Sam", 5, "Great teacher.", "Learned a ton."),
+      Instructor::TestimonialsComponent::Review.new("Riley", 4, "Solid course.", "Would recommend.")
     ]
 
-    render_inline(Instructor::TestimonialsComponent.new(testimonials: quotes))
+    render_inline(Instructor::TestimonialsComponent.new(testimonials: reviews))
 
     assert_selector ".instructor-cloud .instructor-cloud-card", count: 2
     assert_text "Great teacher."

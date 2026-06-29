@@ -1,9 +1,19 @@
 <div class="instructor-cloud">
-  <% testimonials.each do |testimonial| %>
-    <figure class="instructor-cloud-card mb-0">
-      <span class="instructor-cloud-mark text-accent" aria-hidden="true">&ldquo;</span>
-      <p class="instructor-cloud-quote mb-2"><%= testimonial.quote %></p>
-      <figcaption class="small fw-semibold text-body-secondary mb-0">&mdash; <%= testimonial.name %></figcaption>
-    </figure>
+  <% columns.each_with_index do |column, ci| %>
+    <div class="instructor-cloud-col<%= " instructor-cloud-col--offset" if ci.odd? %>">
+      <% column.each do |review| %>
+        <figure class="instructor-cloud-card mb-0">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <span class="instructor-cloud-avatar" aria-hidden="true"><%= review.name.to_s.first %></span>
+            <div class="lh-sm">
+              <p class="fw-bold small mb-0"><%= review.name %></p>
+              <span class="instructor-cloud-stars" aria-label="<%= review.rating %> out of 5"><span class="filled"><%= "★" * review.rating %></span><span class="empty"><%= "★" * (5 - review.rating) %></span></span>
+            </div>
+          </div>
+          <p class="fw-semibold mb-1"><%= review.title %></p>
+          <p class="small text-body-secondary mb-0"><%= review.body %></p>
+        </figure>
+      <% end %>
+    </div>
   <% end %>
 </div>
