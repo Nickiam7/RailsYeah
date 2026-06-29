@@ -357,6 +357,41 @@
   outline-offset: 3px;
 }
 
+/* Course-card hero (/v2 alt layout) — preview thumbnail + stat list in one white
+ * card (Udemy "Course at a glance" style). */
+.course-card {
+  background-color: var(--color-surface);
+  border-radius: 1.25rem;
+  box-shadow: 0 1.5rem 3.5rem rgba(0, 0, 0, 0.12);
+  padding: 0.85rem;
+}
+.course-card .hero-preview {
+  box-shadow: none; /* the card carries the shadow */
+}
+.course-card-stats {
+  padding: 0.4rem 0.65rem 0.15rem;
+}
+.course-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 0;
+}
+.course-stat-row + .course-stat-row {
+  border-top: 1px solid var(--color-border);
+}
+.course-stat-label {
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.course-stat-value {
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+}
+
 /* ============================================================================
  * Check badge (Story #2958) — accent checkmark for objective / feature lists.
  * ========================================================================== */

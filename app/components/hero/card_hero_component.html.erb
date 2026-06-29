@@ -1,0 +1,46 @@
+<section id="overview" class="site-hero section">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <%= render Badge::BadgeComponent.new(label: "Featured on Udemy") %>
+        <h1 class="heading-display heading-display-xl text-accent mt-3 mb-3"><%= title %></h1>
+        <p class="lead-copy measure mb-4"><%= tagline %></p>
+
+        <div class="d-flex flex-wrap align-items-center gap-3 mb-4">
+          <span class="hero-rating fw-semibold"><%= rating %> &#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="text-body-secondary">Created by <%= instructor %></span>
+        </div>
+
+        <div class="d-flex flex-wrap gap-3">
+          <a class="btn btn-brand btn-lg px-4" href="<%= cta_url %>" target="_blank" rel="noopener"><%= cta_text %></a>
+          <a class="btn btn-outline-dark btn-lg px-4" href="<%= cta_url %>" target="_blank" rel="noopener">Preview the course</a>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="course-card">
+          <button type="button" class="hero-preview" aria-label="Play the course preview">
+            <% if image&.attached? %>
+              <%= image_tag image, alt: "Course preview", class: "hero-preview-img" %>
+            <% else %>
+              <%= image_tag "ruby-chrome.png", alt: "Ruby on Rails 8 and Hotwire course preview", class: "hero-preview-img" %>
+            <% end %>
+            <span class="hero-preview-play" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+            </span>
+            <span class="hero-preview-label">Preview this course</span>
+          </button>
+
+          <ul class="course-card-stats list-unstyled mb-0">
+            <% stats.each do |stat| %>
+              <li class="course-stat-row">
+                <span class="course-stat-label"><%= stat.label %></span>
+                <span class="course-stat-value"><%= stat.value %></span>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

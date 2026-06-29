@@ -28,4 +28,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "pages#home"
+
+  # Alternate landing-page layout (Udemy/ZTM-style course-card hero) — separate
+  # route so the primary landing page stays unchanged.
+  get "/v2", to: "pages#v2", as: :landing_v2
 end
