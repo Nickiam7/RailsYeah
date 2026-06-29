@@ -16,9 +16,9 @@
  * variables rather than recompiling SCSS.
  * ------------------------------------------------------------------------- */
 :root {
-  --brand: #d30001;
-  --brand-rgb: 211, 0, 1;
-  --brand-dark: #a90001;
+  --brand: #e21c2c;
+  --brand-rgb: 226, 28, 44;
+  --brand-dark: #b91724;
 }
 
 /* Brand-colored button variant (built on Bootstrap's button CSS variables). */

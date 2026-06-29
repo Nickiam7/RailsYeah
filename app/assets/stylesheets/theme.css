@@ -22,11 +22,11 @@
    * Palette tokens
    * ======================================================================== */
 
-  /* --- Rails-red accent (rubyonrails.org signature red) ------------------- */
-  --color-accent: #d30001;            /* headers, links, primary CTAs */
-  --color-accent-rgb: 211, 0, 1;
-  --color-accent-strong: #a90001;     /* hover / pressed */
-  --color-accent-soft: #fbe7e6;       /* tinted chips, badges, subtle fills */
+  /* --- Brand red accent --------------------------------------------------- */
+  --color-accent: #e21c2c;            /* headers, links, buttons */
+  --color-accent-rgb: 226, 28, 44;
+  --color-accent-strong: #b91724;     /* hover / pressed */
+  --color-accent-soft: #fce8e9;       /* tinted chips, badges, subtle fills */
 
   /* --- Warm background tints (soft pink-gray bands) ----------------------- */
   --color-surface: #ffffff;           /* base / card surface */
@@ -297,6 +297,20 @@
 }
 .site-hero .hero-rating {
   color: #e0a800; /* amber stars, legible on the warm background */
+}
+
+/* White secondary button (e.g. hero "Preview the course") — white fill, hairline
+ * border, dark label; border + label turn accent on hover. */
+.btn-white {
+  --bs-btn-color: var(--color-text);
+  --bs-btn-bg: #fff;
+  --bs-btn-border-color: var(--color-border);
+  --bs-btn-hover-color: var(--color-accent);
+  --bs-btn-hover-bg: #fff;
+  --bs-btn-hover-border-color: var(--color-accent);
+  --bs-btn-active-color: var(--color-accent);
+  --bs-btn-active-bg: #fff;
+  --bs-btn-active-border-color: var(--color-accent);
 }
 
 /* Hero course-preview thumbnail (ruby-chrome.png) — a clickable video preview
