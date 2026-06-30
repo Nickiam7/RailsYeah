@@ -315,8 +315,8 @@
   --bs-btn-active-border-color: var(--color-accent);
 }
 
-/* Hero stat card (under the CTAs) — label + value with subtle vertical dividers,
- * on a white card with a soft drop shadow. */
+/* Hero stat card (under the CTAs) — label + value on a white card with a soft
+ * drop shadow. */
 .hero-stats {
   display: flex;
   flex-wrap: wrap;
@@ -333,12 +333,9 @@
 .hero-stat:first-child {
   padding-left: 0;
 }
-.hero-stat:not(:first-child) {
-  border-left: 1px solid var(--color-border);
-}
-/* On phones the four stats become a tidy 2x2 grid, with the divider on the
- * right-hand column only. */
-@media (max-width: 575.98px) {
+/* On phones, and in the narrow two-column range (992-1200px, where each hero
+ * column is only ~480px), the four stats become a tidy 2x2 grid. */
+@media (max-width: 575.98px), (min-width: 992px) and (max-width: 1199.98px) {
   .hero-stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -346,15 +343,10 @@
   .hero-stat {
     padding-inline: 0;
   }
-  .hero-stat:not(:first-child) {
-    border-left: 0;
-    padding-left: 0;
-  }
   .hero-stat:nth-child(odd) {
     padding-right: 1.25rem;
   }
   .hero-stat:nth-child(even) {
-    border-left: 1px solid var(--color-border);
     padding-left: 1.25rem;
   }
 }
