@@ -17,4 +17,4 @@
 <%= render Sections::FaqComponent.new(items: @faqs) %>
 <%= render Sections::InstructorComponent.new(instructor: @instructor) %>
 
-<%= render Video::ModalComponent.new %>
+<%= render Video::ModalComponent.new(hero_video: @hero&.video, sections: @curriculum) %>

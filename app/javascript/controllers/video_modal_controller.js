@@ -1,22 +1,35 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Drives the shared video modal. Triggers open it via Bootstrap (data-bs-toggle="modal")
-// and carry the source in data-video-url; Bootstrap hands the trigger over as
-// event.relatedTarget on show.bs.modal. When the trigger has no video yet, a "coming
-// soon" placeholder is shown instead of an empty player. Playback resets on close.
+// "Course Preview" modal: a featured player + a playlist. Opening the modal (via a
+// Bootstrap trigger carrying data-video-url) deep-links to the matching row; clicking
+// a row swaps the featured player. When there's nothing to play, a placeholder shows.
+// Playback resets on close.
 export default class extends Controller {
-  static targets = ["player", "empty"]
+  static targets = ["player", "empty", "item"]
+  static classes = ["active"]
 
-  load(event) {
+  open(event) {
     const url = event.relatedTarget?.dataset.videoUrl
-    this.playerTarget.hidden = !url
-    this.emptyTarget.hidden = Boolean(url)
-    if (url) {
-      this.playerTarget.src = url
-      this.playerTarget.play().catch(() => {})
-    } else {
-      this.playerTarget.removeAttribute("src")
-    }
+    const item = this.itemTargets.find((el) => el.dataset.videoUrl === url) || this.itemTargets[0]
+    item ? this.activate(item) : this.showEmpty()
+  }
+
+  select(event) {
+    this.activate(event.currentTarget)
+  }
+
+  activate(item) {
+    this.itemTargets.forEach((el) => el.classList.toggle(this.activeClass, el === item))
+    this.emptyTarget.hidden = true
+    this.playerTarget.hidden = false
+    this.playerTarget.src = item.dataset.videoUrl
+    this.playerTarget.play().catch(() => {})
+  }
+
+  showEmpty() {
+    this.playerTarget.hidden = true
+    this.playerTarget.removeAttribute("src")
+    this.emptyTarget.hidden = false
   }
 
   stop() {

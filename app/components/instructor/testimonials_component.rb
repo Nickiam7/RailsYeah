@@ -11,7 +11,7 @@ class Instructor::TestimonialsComponent < ApplicationComponent
                ""),
     Review.new("Oscar M.", 5, "Great teaching, awesome content.",
                ""),
-    Review.new("André", 5, "This was a really good course to get into Rails and to also understand how Hotwire.",
+    Review.new("André", 5, "This was a really good course to get into Rails and to also understand how Hotwire works.",
                ""),
     Review.new("David Oliveira", 5, "The explanations by the teacher are clear and direct, exactly what I'm looking for.",
                "")

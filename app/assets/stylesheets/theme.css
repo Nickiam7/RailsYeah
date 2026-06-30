@@ -457,6 +457,72 @@
   text-decoration: underline;
 }
 
+/* Course-preview modal — dark panel with a featured player + a playlist of all
+ * available preview videos. */
+.video-modal .modal-content {
+  background-color: #1b1917;
+  color: var(--color-on-dark);
+  border: 0;
+  border-radius: 0.85rem;
+  padding: 1.25rem 1.25rem 1rem;
+}
+.video-modal-eyebrow {
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-on-dark-muted);
+}
+.video-modal-title {
+  font-weight: var(--fw-bold);
+  color: var(--color-on-dark);
+}
+.video-modal-list-heading {
+  font-weight: var(--fw-semibold);
+  color: var(--color-on-dark);
+}
+.video-modal-list {
+  max-height: 15rem;
+  overflow-y: auto;
+}
+.video-modal-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  padding: 0.7rem 0.5rem;
+  background: none;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--color-on-dark);
+  text-align: left;
+}
+.video-modal-list li:first-child .video-modal-item {
+  border-top: 0;
+}
+.video-modal-item:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+.video-modal-item.active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.video-modal-item-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--color-on-dark-muted);
+}
+.video-modal-item.active .video-modal-item-icon {
+  color: var(--color-accent);
+}
+.video-modal-item-title {
+  flex: 1 1 auto;
+  font-weight: var(--fw-medium);
+}
+.video-modal-item-duration {
+  flex-shrink: 0;
+  font-size: var(--fs-small);
+  color: var(--color-on-dark-muted);
+}
+
 /* Video modal — placeholder shown when a preview has no video uploaded yet. */
 .video-modal-empty {
   display: flex;
