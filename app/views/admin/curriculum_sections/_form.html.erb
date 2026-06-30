@@ -6,7 +6,6 @@
   <div class="card shadow-sm">
     <div class="card-body" style="max-width: 42rem;">
       <%= render Admin::FieldComponent.new(form: form, attribute: :title) %>
-      <%= render Admin::FieldComponent.new(form: form, attribute: :lectures_count, as: :number_field) %>
       <%= render Admin::FieldComponent.new(form: form, attribute: :duration) %>
       <%= render Admin::FieldComponent.new(form: form, attribute: :position, as: :number_field) %>
 

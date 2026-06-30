@@ -1,0 +1,15 @@
+welcome:
+  curriculum_section: intro
+  title: Welcome to the Course
+  duration: "1:41"
+  lecture_type: video
+  preview: true
+  position: 0
+
+source_code:
+  curriculum_section: intro
+  title: Source Code
+  duration: "0:45"
+  lecture_type: article
+  preview: false
+  position: 1

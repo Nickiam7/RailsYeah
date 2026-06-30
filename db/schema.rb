@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_06_28_173206) do
+ActiveRecord::Schema[8.0].define(version: 2026_06_30_003252) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -92,6 +92,19 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_28_173206) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "lectures", force: :cascade do |t|
+    t.bigint "curriculum_section_id", null: false
+    t.string "title", null: false
+    t.string "duration"
+    t.string "lecture_type", default: "video", null: false
+    t.boolean "preview", default: false, null: false
+    t.integer "position", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["curriculum_section_id", "position"], name: "index_lectures_on_curriculum_section_id_and_position"
+    t.index ["curriculum_section_id"], name: "index_lectures_on_curriculum_section_id"
+  end
+
   create_table "testimonials", force: :cascade do |t|
     t.string "name", null: false
     t.string "role"
@@ -118,4 +131,5 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_28_173206) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "lectures", "curriculum_sections"
 end

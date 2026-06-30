@@ -1,0 +1,25 @@
+<%= form_with model: [ :admin, curriculum_section, lecture ] do |form| %>
+  <% if lecture.errors.any? %>
+    <div class="alert alert-danger"><%= pluralize(lecture.errors.count, "error") %> prevented saving.</div>
+  <% end %>
+
+  <div class="card shadow-sm">
+    <div class="card-body" style="max-width: 42rem;">
+      <%= render Admin::FieldComponent.new(form: form, attribute: :title) %>
+
+      <div class="mb-3">
+        <%= form.label :lecture_type, "Type", class: "form-label" %>
+        <%= form.select :lecture_type, Lecture::TYPES.map { |t| [ t.capitalize, t ] }, {}, class: "form-select" %>
+      </div>
+
+      <%= render Admin::FieldComponent.new(form: form, attribute: :duration) %>
+      <%= render Admin::FieldComponent.new(form: form, attribute: :preview, as: :check_box) %>
+      <%= render Admin::FieldComponent.new(form: form, attribute: :position, as: :number_field) %>
+
+      <div class="d-flex gap-2">
+        <%= form.submit "Save", class: "btn btn-brand" %>
+        <%= link_to "Cancel", admin_curriculum_section_lectures_path(curriculum_section), class: "btn btn-outline-secondary" %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -21,7 +21,9 @@ Rails.application.routes.draw do
     resource :hero_content, only: %i[edit update]
     resource :instructor, only: %i[edit update]
     resources :learning_objectives, except: %i[show]
-    resources :curriculum_sections, except: %i[show]
+    resources :curriculum_sections, except: %i[show] do
+      resources :lectures, except: %i[show]
+    end
     resources :testimonials, except: %i[show]
     resources :faq_items, except: %i[show]
   end

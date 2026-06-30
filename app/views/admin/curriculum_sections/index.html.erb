@@ -13,10 +13,11 @@
         <% @curriculum_sections.each do |section| %>
           <tr id="<%= dom_id(section) %>">
             <td><%= section.title %></td>
-            <td class="text-end"><%= section.lectures_count %></td>
+            <td class="text-end"><%= section.lectures.size %></td>
             <td><%= section.duration %></td>
             <td class="text-end"><%= section.position %></td>
             <td class="text-end text-nowrap">
+              <%= link_to "Lectures", admin_curriculum_section_lectures_path(section), class: "btn btn-sm btn-brand" %>
               <%= link_to "Edit", edit_admin_curriculum_section_path(section), class: "btn btn-sm btn-outline-secondary" %>
               <%= link_to "Delete", admin_curriculum_section_path(section), class: "btn btn-sm btn-outline-danger",
                     data: { turbo_method: :delete, turbo_confirm: "Delete this section?" } %>

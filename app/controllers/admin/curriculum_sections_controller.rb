@@ -5,7 +5,7 @@ module Admin
     before_action :set_curriculum_section, only: %i[edit update destroy]
 
     def index
-      @curriculum_sections = CurriculumSection.ordered
+      @curriculum_sections = CurriculumSection.ordered.includes(:lectures)
     end
 
     def new
@@ -46,7 +46,7 @@ module Admin
     end
 
     def curriculum_section_params
-      params.require(:curriculum_section).permit(:title, :lectures_count, :duration, :position)
+      params.require(:curriculum_section).permit(:title, :duration, :position)
     end
   end
 end

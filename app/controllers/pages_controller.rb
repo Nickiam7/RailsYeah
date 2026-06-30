@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
     @hero = HeroContent.current
     @objectives = LearningObjective.ordered
-    @curriculum = CurriculumSection.ordered
+    @curriculum = CurriculumSection.ordered.includes(:lectures)
     @testimonials = Testimonial.published.ordered
     @faqs = FaqItem.published.ordered
     @instructor = Instructor.current
