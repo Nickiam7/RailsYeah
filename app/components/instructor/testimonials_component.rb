@@ -7,22 +7,14 @@ class Instructor::TestimonialsComponent < ApplicationComponent
   Review = Data.define(:name, :rating, :title, :body)
 
   PLACEHOLDERS = [
-    Review.new("Priya S.", 5, "Finally, Rails that clicks.",
-               "Nick's explanations are so clear. I'd bounced off other courses, but the way he builds " \
-               "things up step by step made it all make sense."),
-    Review.new("Elena K.", 5, "Worth every minute.",
-               "Asked a question in the Q&A and got a thorough answer the same day."),
-    Review.new("Sarah N.", 5, "Best Rails teacher out there.",
-               "I went from copy-pasting tutorials to actually understanding what I'm writing. The Hotwire " \
-               "sections are gold."),
-    Review.new("Monica T.", 5, "Exactly what I needed.",
-               "Everything is practical and real-world. I'm already using patterns from the course at work, " \
-               "and I've recommended it to my whole team."),
-    Review.new("Dan T.", 5, "Love it.",
-               "Clear, practical, and genuinely fun to learn from."),
-    Review.new("John D.", 4, "Great, with room to grow.",
-               "Solid all around. A couple of sections I wanted to go even deeper on, but I shipped a real " \
-               "app by the end and learned a ton.")
+    Review.new("Aaron", 5, "Amazing course and instructor.",
+               ""),
+    Review.new("Oscar M.", 5, "Great teaching, awesome content.",
+               ""),
+    Review.new("André", 5, "This was a really good course to get into Rails and to also understand how Hotwire.",
+               ""),
+    Review.new("David Oliveira", 5, "The explanations by the teacher are clear and direct, exactly what I'm looking for.",
+               "")
   ].freeze
 
   def initialize(testimonials: PLACEHOLDERS)
