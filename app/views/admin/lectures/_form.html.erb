@@ -16,6 +16,13 @@
       <%= render Admin::FieldComponent.new(form: form, attribute: :preview, as: :check_box) %>
       <%= render Admin::FieldComponent.new(form: form, attribute: :position, as: :number_field) %>
 
+      <% if lecture.video.attached? %>
+        <p class="small text-body-secondary mb-1">Current video: <%= lecture.video.filename %></p>
+      <% end %>
+      <%= render Admin::FieldComponent.new(form: form, attribute: :video, as: :file_field,
+            label: "Preview video", accept: "video/mp4,video/webm,video/ogg,video/quicktime") %>
+      <p class="form-text mt-0 mb-3">Shown in the preview modal when “Preview” is enabled. MP4/WebM/Ogg/MOV, up to 200MB.</p>
+
       <div class="d-flex gap-2">
         <%= form.submit "Save", class: "btn btn-brand" %>
         <%= link_to "Cancel", admin_curriculum_section_lectures_path(curriculum_section), class: "btn btn-outline-secondary" %>

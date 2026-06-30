@@ -6,6 +6,7 @@
       tagline: @hero&.subtitle || Site::TAGLINE,
       rating: CourseStat.rating_display,
       image: @hero&.image,
+      video: @hero&.video,
       cta_text: @hero&.cta_label || "Enroll on Udemy",
       cta_url: @hero&.cta_url || Site::UDEMY_URL
     ) %>
@@ -15,3 +16,5 @@
 <%= render Sections::TestimonialsComponent.new(testimonials: @testimonials) %>
 <%= render Sections::FaqComponent.new(items: @faqs) %>
 <%= render Sections::InstructorComponent.new(instructor: @instructor) %>
+
+<%= render Video::ModalComponent.new %>

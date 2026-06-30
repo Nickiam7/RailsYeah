@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
     @hero = HeroContent.current
     @objectives = LearningObjective.ordered
-    @curriculum = CurriculumSection.ordered.includes(:lectures)
+    @curriculum = CurriculumSection.ordered.includes(lectures: { video_attachment: :blob })
     @testimonials = Testimonial.published.ordered
     @faqs = FaqItem.published.ordered
     @instructor = Instructor.current

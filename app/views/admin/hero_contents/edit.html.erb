@@ -18,6 +18,13 @@
         <% end %>
         <%= render Admin::FieldComponent.new(form: form, attribute: :image, as: :file_field, accept: "image/png,image/jpeg,image/webp") %>
 
+        <% if @hero_content.video.attached? %>
+          <p class="small text-body-secondary mb-1">Current video: <%= @hero_content.video.filename %></p>
+        <% end %>
+        <%= render Admin::FieldComponent.new(form: form, attribute: :video, as: :file_field,
+              label: "Preview video", accept: "video/mp4,video/webm,video/ogg,video/quicktime") %>
+        <p class="form-text mt-0 mb-3">Plays in the preview modal from the hero. MP4/WebM/Ogg/MOV, up to 200MB.</p>
+
         <div class="d-flex gap-2">
           <%= form.submit "Save", class: "btn btn-brand" %>
           <%= link_to "Cancel", admin_root_path, class: "btn btn-outline-secondary" %>

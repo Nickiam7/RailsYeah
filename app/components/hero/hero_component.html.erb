@@ -1,3 +1,4 @@
+<% preview_url = video_url %>
 <section id="overview" class="site-hero section">
   <div class="container">
     <div class="row align-items-center g-5">
@@ -13,7 +14,12 @@
 
         <div class="d-flex flex-wrap gap-3">
           <a class="btn btn-brand btn-lg px-4" href="<%= cta_url %>" target="_blank" rel="noopener"><%= cta_text %></a>
-          <a class="btn btn-white btn-lg px-4" href="<%= cta_url %>" target="_blank" rel="noopener">Preview the course</a>
+          <% if preview_url %>
+            <button type="button" class="btn btn-white btn-lg px-4"
+                    data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="<%= preview_url %>">Preview the course</button>
+          <% else %>
+            <a class="btn btn-white btn-lg px-4" href="<%= cta_url %>" target="_blank" rel="noopener">Preview the course</a>
+          <% end %>
         </div>
 
         <div class="hero-stats d-flex flex-wrap mt-5 justify-content-between">
@@ -27,9 +33,10 @@
       </div>
 
       <div class="col-lg-6">
-        <%# Course-preview thumbnail. Clicking will open a video modal (wired in a
-            follow-up); this story is layout only. %>
-        <button type="button" class="hero-preview" aria-label="Play the course preview">
+        <%# Course-preview thumbnail — opens the shared video modal when a preview
+            video is uploaded; otherwise it's a non-interactive thumbnail. %>
+        <button type="button" class="hero-preview" aria-label="Play the course preview"
+                <% if preview_url %>data-bs-toggle="modal" data-bs-target="#videoModal" data-video-url="<%= preview_url %>"<% end %>>
           <% if image&.attached? %>
             <%= image_tag image, alt: "Course preview", class: "hero-preview-img" %>
           <% else %>

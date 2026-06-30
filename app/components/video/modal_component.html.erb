@@ -1,0 +1,15 @@
+<div class="modal fade video-modal" id="videoModal" tabindex="-1" aria-hidden="true"
+     data-controller="video-modal"
+     data-action="show.bs.modal->video-modal#load hidden.bs.modal->video-modal#stop">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content bg-transparent border-0">
+      <div class="text-end mb-2">
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="ratio ratio-16x9">
+        <video data-video-modal-target="player" class="rounded shadow-lg w-100 h-100"
+               controls playsinline preload="none"></video>
+      </div>
+    </div>
+  </div>
+</div>

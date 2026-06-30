@@ -52,7 +52,7 @@ module Admin
     end
 
     def lecture_params
-      params.require(:lecture).permit(:title, :duration, :lecture_type, :preview, :position)
+      params.require(:lecture).permit(:title, :duration, :lecture_type, :preview, :position, :video)
     end
   end
 end

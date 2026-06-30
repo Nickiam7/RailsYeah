@@ -20,4 +20,19 @@ class LectureTest < ActiveSupport::TestCase
     assert lectures(:source_code).article?
     assert_not lectures(:welcome).article?
   end
+
+  test "rejects a video that is not an allowed type" do
+    lecture = lectures(:welcome)
+    lecture.video.attach(io: StringIO.new("not a video"), filename: "doc.txt", content_type: "text/plain")
+
+    assert_not lecture.valid?
+    assert_includes lecture.errors.attribute_names, :video
+  end
+
+  test "accepts a valid video" do
+    lecture = lectures(:welcome)
+    lecture.video.attach(io: StringIO.new("fake mp4 bytes"), filename: "clip.mp4", content_type: "video/mp4")
+
+    assert lecture.valid?
+  end
 end

@@ -8,7 +8,8 @@ class Hero::HeroComponent < ApplicationComponent
   Stat = Data.define(:label, :value)
 
   def initialize(title: Site::COURSE, tagline: Site::TAGLINE, instructor: Site::INSTRUCTOR,
-                 rating: Site::RATING, cta_text: "Enroll on Udemy", cta_url: Site::UDEMY_URL, image: nil)
+                 rating: Site::RATING, cta_text: "Enroll on Udemy", cta_url: Site::UDEMY_URL,
+                 image: nil, video: nil)
     @title = title
     @tagline = tagline
     @instructor = instructor
@@ -16,11 +17,17 @@ class Hero::HeroComponent < ApplicationComponent
     @cta_text = cta_text
     @cta_url = cta_url
     @image = image
+    @video = video
   end
 
   private
 
-  attr_reader :title, :tagline, :instructor, :rating, :cta_text, :cta_url, :image
+  attr_reader :title, :tagline, :instructor, :rating, :cta_text, :cta_url, :image, :video
+
+  # URL of the attached preview video, or nil when none is uploaded.
+  def video_url
+    helpers.url_for(video) if video&.attached?
+  end
 
   def stats
     [
