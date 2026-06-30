@@ -318,6 +318,9 @@
 /* Hero stat card (under the CTAs) — label + value with subtle vertical dividers,
  * on a white card with a soft drop shadow. */
 .hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   background-color: #fff;
   border-radius: 0.85rem;
   box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.08);
@@ -332,6 +335,28 @@
 }
 .hero-stat:not(:first-child) {
   border-left: 1px solid var(--color-border);
+}
+/* On phones the four stats become a tidy 2x2 grid, with the divider on the
+ * right-hand column only. */
+@media (max-width: 575.98px) {
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .hero-stat {
+    padding-inline: 0;
+  }
+  .hero-stat:not(:first-child) {
+    border-left: 0;
+    padding-left: 0;
+  }
+  .hero-stat:nth-child(odd) {
+    padding-right: 1.25rem;
+  }
+  .hero-stat:nth-child(even) {
+    border-left: 1px solid var(--color-border);
+    padding-left: 1.25rem;
+  }
 }
 
 /* Hero course-preview thumbnail (ruby-chrome.png) — a clickable video preview
