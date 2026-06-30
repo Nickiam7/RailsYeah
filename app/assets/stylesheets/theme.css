@@ -457,6 +457,19 @@
   text-decoration: underline;
 }
 
+/* Video modal — placeholder shown when a preview has no video uploaded yet. */
+.video-modal-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1a1a;
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: var(--fw-semibold);
+}
+.video-modal-empty[hidden] {
+  display: none;
+}
+
 /* ============================================================================
  * Testimonials (Story #2961) — review cards with star rating + avatar.
  * ========================================================================== */

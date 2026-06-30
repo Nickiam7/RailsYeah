@@ -8,5 +8,6 @@ class Video::ModalComponentTest < ViewComponent::TestCase
 
     assert_selector "#videoModal.modal[data-controller='video-modal']"
     assert_selector "video[data-video-modal-target='player'][controls]"
+    assert_selector "[data-video-modal-target='empty']", text: "Preview coming soon.", visible: false
   end
 end
