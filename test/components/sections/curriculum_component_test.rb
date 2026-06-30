@@ -17,7 +17,9 @@ class Sections::CurriculumComponentTest < ViewComponent::TestCase
     assert_text "2 lectures · 13min"
     assert_selector ".curriculum-lecture", count: 2
     assert_text "Welcome"
-    assert_selector ".curriculum-lecture-preview", text: "Preview", count: 1
+    # Every previewable lecture opens the shared video modal (no Udemy fallback).
+    assert_selector "button.curriculum-lecture-preview[data-bs-toggle='modal']", text: "Preview", count: 1
+    assert_no_selector "a.curriculum-lecture-preview"
   end
 
   def test_hidden_when_no_sections

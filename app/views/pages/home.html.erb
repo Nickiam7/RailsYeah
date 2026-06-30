@@ -12,7 +12,7 @@
     ) %>
 
 <%= render Sections::LearnComponent.new(objectives: @objectives) %>
-<%= render Sections::CurriculumComponent.new(sections: @curriculum) %>
+<%= render Sections::CurriculumComponent.new(sections: @curriculum, fallback_video: @hero&.video) %>
 <%= render Sections::TestimonialsComponent.new(testimonials: @testimonials) %>
 <%= render Sections::FaqComponent.new(items: @faqs) %>
 <%= render Sections::InstructorComponent.new(instructor: @instructor) %>

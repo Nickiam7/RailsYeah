@@ -25,13 +25,9 @@
                       <span class="curriculum-lecture-icon" aria-hidden="true"><%= lecture_icon(lecture) %></span>
                       <span class="curriculum-lecture-title"><%= lecture.title %></span>
                       <% if lecture.preview? %>
-                        <% if lecture.video.attached? %>
-                          <button type="button" class="curriculum-lecture-preview"
-                                  data-bs-toggle="modal" data-bs-target="#videoModal"
-                                  data-video-url="<%= helpers.url_for(lecture.video) %>">Preview</button>
-                        <% else %>
-                          <a class="curriculum-lecture-preview" href="<%= Site::UDEMY_URL %>" target="_blank" rel="noopener">Preview</a>
-                        <% end %>
+                        <button type="button" class="curriculum-lecture-preview"
+                                data-bs-toggle="modal" data-bs-target="#videoModal"
+                                data-video-url="<%= preview_url_for(lecture) %>">Preview</button>
                       <% end %>
                       <span class="ms-auto text-body-secondary small text-nowrap"><%= lecture.duration %></span>
                     </li>
