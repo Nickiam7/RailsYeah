@@ -23,6 +23,9 @@
             <% if instructor.bio.present? %>
               <div class="rich-text-content mb-0"><%= helpers.rich_text(instructor.bio) %></div>
             <% end %>
+
+            <%= link_to "Enroll on Udemy", Site::UDEMY_URL, class: "btn btn-brand px-4 mt-4",
+                  target: "_blank", rel: "noopener" %>
           </div>
         </div>
       </div>
