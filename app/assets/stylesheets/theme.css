@@ -260,16 +260,20 @@
 .tok-comment  { color: #6b7280; font-style: italic; }
 
 /* ============================================================================
- * Navbar restyle (Story #2956) — light, translucent, rubyonrails.org-style top
- * nav. Overrides the base .site-navbar (application.css) on the public site only
- * (theme.css is not loaded in the admin layout, so the admin nav is untouched).
+ * Navbar restyle (Story #2956) — warm at the top of the page, transitioning to a
+ * white + shadow bar once scrolled (see the navbar Stimulus controller). Overrides
+ * the base .site-navbar (application.css) on the public site only (theme.css is not
+ * loaded in the admin layout, so the admin nav is untouched).
  * ========================================================================== */
 .site-navbar {
-  background-color: rgba(255, 255, 255, 0.9);
-  backdrop-filter: saturate(180%) blur(10px);
-  -webkit-backdrop-filter: saturate(180%) blur(10px);
-  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-surface-warm);
   padding-block: 0.65rem;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+/* Past the scroll threshold (class toggled by the navbar Stimulus controller). */
+.site-navbar.site-navbar--scrolled {
+  background-color: var(--color-surface);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
 .site-navbar .navbar-brand {
   color: var(--color-text);
@@ -505,7 +509,7 @@
   position: absolute;
   inset: -2.5rem -2rem;
   background-color: var(--color-surface-warm);
-  border-radius: 46% 54% 57% 43% / 53% 46% 54% 47%;
+  border-radius: 0.85rem;
   opacity: 0.7;
   z-index: 0;
 }
