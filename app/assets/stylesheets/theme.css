@@ -582,6 +582,11 @@
 
 /* Instructor reviews cloud — two staggered columns of small review cards over a
  * soft blob, tight with a slight overlap (Instructor::TestimonialsComponent). */
+/* Contain the cloud's blob (its negative inset extends past the column) so it
+ * doesn't cause horizontal scroll on narrow screens. */
+#instructor {
+  overflow-x: clip;
+}
 .instructor-cloud {
   position: relative;
   display: flex;
@@ -644,6 +649,10 @@
   color: #d8d2d0;
 }
 
+.btn-brand--instructor {
+  width: 50%;
+}
+
 @media (max-width: 575.98px) {
   .instructor-cloud {
     flex-direction: column;
@@ -651,6 +660,9 @@
   .instructor-cloud-col--offset {
     margin-top: 0;
     margin-left: 0;
+  }
+  .btn-brand--instructor {
+    width: 100%;
   }
 }
 
