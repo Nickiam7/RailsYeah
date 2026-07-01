@@ -10,6 +10,9 @@
 # Ignore all environment files.
 /.env*
 
+# Kamal registry password (Docker Hub PAT) — referenced by .kamal/secrets.
+/.kamal/registry_password
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*

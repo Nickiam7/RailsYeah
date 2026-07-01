@@ -608,15 +608,8 @@
   position: relative;
   display: flex;
   gap: 0.75rem;
-}
-.instructor-cloud::before {
-  content: "";
-  position: absolute;
-  inset: -2.5rem -2rem;
-  background-color: var(--color-surface-warm);
+  padding: 2.5rem;
   border-radius: 0.85rem;
-  opacity: 0.7;
-  z-index: 0;
 }
 .instructor-cloud-col {
   position: relative;
@@ -820,7 +813,7 @@
 /* Glowing glass frame around the editor — a frosted, reddish-tinted thick border
  * with a soft brand-red glow behind it. */
 .code-editor-frame {
-  padding: 0.6rem;
+  padding: 0.75rem;
   border-radius: 1.15rem;
   background: linear-gradient(135deg, rgba(var(--brand-rgb), 0.16), rgba(255, 255, 255, 0.04));
   border: 1px solid rgba(var(--brand-rgb), 0.22);

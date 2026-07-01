@@ -27,18 +27,7 @@
       </ul>
 
       <div class="d-flex align-items-center gap-2 ms-lg-3 mt-2 mt-lg-0">
-        <% if signed_in %>
-          <%= link_to "Sign out", destroy_user_session_path,
-                class: "btn btn-outline-secondary", data: { turbo_method: :delete } %>
-          <% if Rails.env.development? %>
-            <%= link_to "Admin", admin_root_path, class: "nav-link" %>
-          <% end %>
-        <% else %>
-          <a class="btn btn-brand px-3" href="<%= cta_url %>" target="_blank" rel="noopener"><%= cta_text %></a>
-          <% if Rails.env.development? %>
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          <% end %>
-        <% end %>
+        <a class="btn btn-brand px-3" href="<%= cta_url %>" target="_blank" rel="noopener"><%= cta_text %></a>
       </div>
     </div>
   </div>

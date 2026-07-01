@@ -25,6 +25,19 @@
         <ul class="list-unstyled mb-0">
           <li class="mb-2"><%= instructor %></li>
           <li class="mb-2"><a href="<%= github_url %>" target="_blank" rel="noopener">GitHub</a></li>
+          <% if Rails.env.development? && helpers.user_signed_in? %>
+          <li>
+            <%= link_to "Admin", admin_root_path %>
+          </li>
+          <li>
+            <%= link_to "Sign out", destroy_user_session_path,
+                class: "btn btn-outline-secondary", data: { turbo_method: :delete } %>
+          </li>
+          <% else %>
+          <li>
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          </li>
+          <% end %>
         </ul>
       </div>
     </div>
