@@ -82,8 +82,11 @@ production:
   primary: &primary_production
     <<: *default
     database: rails_yeah_production
-    username: rails_yeah
+    host: <%= Rails.application.credentials.dig(:database, :host) %>
+    port: <%= Rails.application.credentials.dig(:database, :port) || 25060 %>
+    username: <%= Rails.application.credentials.dig(:database, :username) || "rails_yeah" %>
     password: <%= Rails.application.credentials.dig(:database, :password) || ENV["RAILS_YEAH_DATABASE_PASSWORD"] %>
+    sslmode: require
   cache:
     <<: *primary_production
     database: rails_yeah_production_cache

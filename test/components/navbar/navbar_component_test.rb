@@ -21,10 +21,13 @@ class Navbar::NavbarComponentTest < ViewComponent::TestCase
     assert_no_link("Curriculum")
   end
 
-  def test_shows_sign_out_instead_of_the_cta_when_signed_in
+  def test_always_shows_the_cta_and_no_auth_links
+    # The public navbar shows only the Udemy CTA — no Sign out / Login / Admin links,
+    # regardless of session (auth links are intentionally kept out of the marketing nav).
     render_inline(Navbar::NavbarComponent.new(signed_in: true))
 
-    assert_link("Sign out", href: "/users/sign_out")
-    assert_no_link("Enroll on Udemy")
+    assert_link("Enroll on Udemy", href: Site::UDEMY_URL)
+    assert_no_link("Sign out")
+    assert_no_link("Login")
   end
 end

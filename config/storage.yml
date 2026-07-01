@@ -6,17 +6,18 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
-# DigitalOcean Spaces (S3-compatible) — the planned production target.
-# To activate: add `gem "aws-sdk-s3"`, set `config.active_storage.service = :digitalocean`
-# in config/environments/production.rb, and add the secrets via `bin/rails credentials:edit`
-# (digitalocean: endpoint:/region:/bucket:/access_key_id:/secret_access_key:).
-# digitalocean:
-#   service: S3
-#   endpoint: <%= Rails.application.credentials.dig(:digitalocean, :endpoint) %>
-#   region: <%= Rails.application.credentials.dig(:digitalocean, :region) %>
-#   bucket: <%= Rails.application.credentials.dig(:digitalocean, :bucket) %>
-#   access_key_id: <%= Rails.application.credentials.dig(:digitalocean, :access_key_id) %>
-#   secret_access_key: <%= Rails.application.credentials.dig(:digitalocean, :secret_access_key) %>
+# DigitalOcean Spaces (S3-compatible) — production object storage. Bucket/region/
+# endpoint aren't secret and are set inline; only the access keys come from
+# credentials (digitalocean: access_key_id / secret_access_key). public: true serves
+# media over direct, CDN-cacheable URLs.
+digitalocean:
+  service: S3
+  endpoint: https://nyc3.digitaloceanspaces.com
+  region: nyc3
+  bucket: railsyeah-prod
+  access_key_id: <%= Rails.application.credentials.dig(:digitalocean, :access_key_id) %>
+  secret_access_key: <%= Rails.application.credentials.dig(:digitalocean, :secret_access_key) %>
+  public: true
 
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
